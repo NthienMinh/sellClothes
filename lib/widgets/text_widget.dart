@@ -57,7 +57,11 @@ class _TextWidgetState extends State<TextWidget> {
                   },
                   child: Row(
                     children: [
-                      SmallText(text: "Xem thêm", color: AppColor.mainColor),
+                      hiddenText
+                          ? SmallText(
+                              text: "Xem thêm", color: AppColor.mainColor)
+                          : SmallText(
+                              text: "Rút gọn", color: AppColor.mainColor),
                       Icon(
                           hiddenText
                               ? Icons.arrow_drop_down
