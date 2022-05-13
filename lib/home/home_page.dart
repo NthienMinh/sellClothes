@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/cart/cart_history.dart';
 import 'package:mobile_ui/home/main_clothes_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -75,7 +76,7 @@ class _HomePageState extends State<HomePage> {
     return [
       MainClothesPage(),
       Container(child: Center(child: Text("page 1"))),
-      Container(child: Center(child: Text("page 2"))),
+      CartHistory(),
       Container(child: Center(child: Text("page 3")))
     ];
   }
