@@ -3,11 +3,9 @@ import 'package:get/get.dart';
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
 import 'package:mobile_ui/home/main_clothes_page.dart';
-import 'helper/dependencies.dart' as dep;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dep.init;
   runApp(const MyApp());
 }
 
@@ -32,7 +30,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const recommandedClotheDetail(),
+      home: const MainClothesPage(),
     );
   }
 }
