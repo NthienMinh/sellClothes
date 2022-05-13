@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mobile_ui/cart/cart_page.dart';
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
+import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/home/main_clothes_page.dart';
 
 Future<void> main() async {
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const CartPage(),
+      home: const HomePage(),
     );
   }
 }
