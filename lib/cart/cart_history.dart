@@ -11,27 +11,16 @@ class CartHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColor.mainColor,
+        title: BigText(
+          text: "Lịch sử mua hàng",
+          size: 24,
+          color: Colors.white,
+        ),
+      ),
       body: Column(
         children: [
-          Container(
-            color: AppColor.mainColor,
-            height: Dimensions.number100,
-            width: double.maxFinite,
-            padding: EdgeInsets.only(top: Dimensions.number45),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                BigText(
-                  text: "Lịch sử mua hàng",
-                  color: Colors.white,
-                ),
-                AppIcon(
-                  icon: Icons.shopping_cart_outlined,
-                  iconColor: AppColor.mainColor,
-                )
-              ],
-            ),
-          ),
           Expanded(
               child: Container(
             margin: EdgeInsets.only(
@@ -42,6 +31,8 @@ class CartHistory extends StatelessWidget {
                 removeTop: true,
                 context: context,
                 child: ListView(
+                  physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics()),
                   children: [
                     for (int i = 0; i < 10; i++)
                       Container(
@@ -78,17 +69,11 @@ class CartHistory extends StatelessWidget {
                                 Container(
                                   height: Dimensions.number70,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                                    mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      SmallText(
-                                          text: "Total",
-                                          color: AppColor.textColor),
-                                      BigText(text: "3 items"),
                                       Container(
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: Dimensions.number10,
+                                            horizontal: Dimensions.number20,
                                             vertical: Dimensions.number5),
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(
@@ -97,7 +82,7 @@ class CartHistory extends StatelessWidget {
                                                 width: 1,
                                                 color: AppColor.mainColor)),
                                         child: SmallText(
-                                          text: "one more",
+                                          text: "Chi tiết",
                                           color: AppColor.mainColor,
                                         ),
                                       ),

@@ -3,8 +3,14 @@ import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/account/account_page.dart';
 import 'package:mobile_ui/cart/cart_history.dart';
+import 'package:mobile_ui/cart/cart_page.dart';
+import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
+import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
 import 'package:mobile_ui/home/main_clothes_page.dart';
+import 'package:mobile_ui/account/sign_up_page.dart';
+import 'package:mobile_ui/page/no_data_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class HomePage extends StatefulWidget {
@@ -73,37 +79,28 @@ class _HomePageState extends State<HomePage> {
   // }
 
   List<Widget> _buildScreens() {
-    return [
-      MainClothesPage(),
-      Container(child: Center(child: Text("page 1"))),
-      CartHistory(),
-      Container(child: Center(child: Text("page 3")))
-    ];
+    return [MainClothesPage(), SignUpPage(), CartHistory(), AccountPage()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.home),
-        title: ("Home"),
         activeColorPrimary: AppColor.mainColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.archivebox),
-        title: ("Archive"),
         activeColorPrimary: AppColor.mainColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.cart),
-        title: ("Cart"),
         activeColorPrimary: AppColor.mainColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.person),
-        title: ("Me"),
         activeColorPrimary: AppColor.mainColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
