@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
   // }
 
   List<Widget> _buildScreens() {
-    return [MainClothesPage(), SignUpPage(), CartHistory(), AccountPage()];
+    return [MainClothesPage(), CartPage(), CartHistory(), AccountPage()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
