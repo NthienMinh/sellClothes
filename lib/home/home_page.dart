@@ -9,11 +9,12 @@ import 'package:mobile_ui/cart/cart_page.dart';
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
 import 'package:mobile_ui/home/main_clothes_page.dart';
-import 'package:mobile_ui/account/sign_up_page.dart';
+
 import 'package:mobile_ui/page/no_data_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class HomePage extends StatefulWidget {
+  static String routeName = "/home";
   const HomePage({Key? key}) : super(key: key);
 
   @override

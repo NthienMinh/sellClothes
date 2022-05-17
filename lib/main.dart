@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile_ui/account/sign_in_page.dart';
+import 'package:mobile_ui/sign_in/sign_in_screen.dart';
 import 'package:mobile_ui/cart/cart_page.dart';
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
 import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/home/main_clothes_page.dart';
-import 'package:mobile_ui/account/sign_up_page.dart';
+
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,8 +35,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
-      //home: const SignInPage(),
+      //home: const HomePage(),
+      home: SignInScreen(),
     );
   }
 }
