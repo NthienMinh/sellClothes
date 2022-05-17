@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_ui/routes.dart';
 import 'package:mobile_ui/sign_in/sign_in_screen.dart';
 import 'package:mobile_ui/cart/cart_page.dart';
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
 import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/home/main_clothes_page.dart';
-
-
+import 'package:mobile_ui/sign_up/sign_up_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      routes: routes,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -35,8 +36,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      //home: const HomePage(),
-      home: SignInScreen(),
+      initialRoute: SignInScreen.routeName,
     );
   }
 }

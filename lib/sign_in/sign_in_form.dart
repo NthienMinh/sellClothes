@@ -1,13 +1,12 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/forgot_password/forgot_password.dart';
+import 'package:mobile_ui/sign_up/sign_up_screen.dart';
 import 'package:mobile_ui/widgets/app_text_field.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
+import 'package:mobile_ui/widgets/no_account_text.dart';
 import 'package:mobile_ui/widgets/small_text.dart';
-
-import '../sign_up/sign_up_page.dart';
 
 class SignInForm extends StatefulWidget {
   @override
@@ -70,14 +69,16 @@ class _SignInFormState extends State<SignInForm> {
               ),
               SizedBox(width: Dimensions.number100 + Dimensions.number25),
               GestureDetector(
-                // onTap: () => Navigator.pushNamed(
-                //     context, ForgotPasswordScreen.routeName),
-                child: SmallText(
-                  text: "Quên mật khẩu",
-                  size: Dimensions.font16,
-                  color: AppColor.mainBlackColor,
+                onTap: () => Navigator.pushNamed(
+                    context, ForgotPassWordScreen.routeName),
+                child: Text(
+                  "Quên mật khẩu",
+                  style: TextStyle(
+                      color: AppColor.signColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: Dimensions.font16),
                 ),
-              ),
+              )
             ],
           ),
           SizedBox(height: Dimensions.number25),
@@ -96,29 +97,12 @@ class _SignInFormState extends State<SignInForm> {
             ),
           ),
           SizedBox(height: Dimensions.number15),
-          RichText(
-              text: TextSpan(
-                  text: "Chưa có tài khoản?",
-                  style: TextStyle(
-                      color: Colors.grey[500],
-                      fontSize: Dimensions.number7 + Dimensions.number5),
-                  children: [
-                TextSpan(
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () => Get.to(() => SignUpPage()),
-                    text: " Đăng ký ngay",
-                    style: TextStyle(
-                        color: AppColor.mainBlackColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: Dimensions.number7 * 2))
-              ])),
+          NoAccountText(),
           SizedBox(height: Dimensions.number70),
-          RichText(
-              text: TextSpan(
-                  text: "@Ứng dụng được thực hiện bởi FTeam",
-                  style: TextStyle(
-                      color: Colors.grey[500],
-                      fontSize: Dimensions.number7 + Dimensions.number5)))
+          Text(
+            "@Ứng dụng được phát triển bởi nhóm FTeam",
+            style: TextStyle(color: AppColor.paraColor),
+          )
         ],
       ),
     );
