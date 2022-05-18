@@ -41,6 +41,11 @@ class Body extends StatelessWidget {
           ),
           SizedBox(height: Dimensions.number30),
           ForgotPassWordForm(),
+          SizedBox(height: Dimensions.number45),
+          Text(
+            "@Ứng dụng được phát triển bởi nhóm FTeam",
+            style: TextStyle(color: AppColor.paraColor),
+          )
         ],
       ),
     );

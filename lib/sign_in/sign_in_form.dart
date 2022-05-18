@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/forgot_password/forgot_password.dart';
+import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/sign_up/sign_up_screen.dart';
 import 'package:mobile_ui/widgets/app_text_field.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
@@ -82,27 +83,24 @@ class _SignInFormState extends State<SignInForm> {
             ],
           ),
           SizedBox(height: Dimensions.number25),
-          Container(
-            height: Dimensions.screenHeight / 13,
-            width: Dimensions.screenWidth / 2,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.border30),
-                color: AppColor.mainColor),
-            child: Center(
-              child: BigText(
-                text: "Đăng nhập",
-                size: Dimensions.font26,
-                color: Colors.white,
-              ),
-            ),
-          ),
+          GestureDetector(
+              onTap: () => Navigator.pushNamed(context, HomePage.routeName),
+              child: Container(
+                height: Dimensions.screenHeight / 13,
+                width: Dimensions.screenWidth / 2,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.border30),
+                    color: AppColor.mainColor),
+                child: Center(
+                  child: BigText(
+                    text: "Đăng nhập",
+                    size: Dimensions.font26,
+                    color: Colors.white,
+                  ),
+                ),
+              )),
           SizedBox(height: Dimensions.number15),
           NoAccountText(),
-          SizedBox(height: Dimensions.number70),
-          Text(
-            "@Ứng dụng được phát triển bởi nhóm FTeam",
-            style: TextStyle(color: AppColor.paraColor),
-          )
         ],
       ),
     );

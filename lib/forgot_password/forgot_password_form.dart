@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/sign_in/sign_in_screen.dart';
 import 'package:mobile_ui/widgets/app_text_field.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
@@ -26,20 +27,22 @@ class _ForgotPassWordFormState extends State<ForgotPassWordForm> {
           AppTextField(
               textController: emailText, hintText: "Email", icon: Icons.email),
           SizedBox(height: Dimensions.number70),
-          Container(
-            height: Dimensions.screenHeight / 13,
-            width: Dimensions.screenWidth / 2,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.border30),
-                color: AppColor.mainColor),
-            child: Center(
-              child: BigText(
-                text: "Tiếp tục",
-                size: Dimensions.font26,
-                color: Colors.white,
-              ),
-            ),
-          ),
+          GestureDetector(
+              onTap: () => Navigator.pushNamed(context, HomePage.routeName),
+              child: Container(
+                height: Dimensions.screenHeight / 13,
+                width: Dimensions.screenWidth / 2,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.border30),
+                    color: AppColor.mainColor),
+                child: Center(
+                  child: BigText(
+                    text: "Tiếp tục",
+                    size: Dimensions.font26,
+                    color: Colors.white,
+                  ),
+                ),
+              )),
           SizedBox(height: Dimensions.number85),
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, SignInScreen.routeName),
@@ -51,11 +54,6 @@ class _ForgotPassWordFormState extends State<ForgotPassWordForm> {
                   fontSize: Dimensions.number7 * 2),
             ),
           ),
-          SizedBox(height: Dimensions.number45),
-          Text(
-            "@Ứng dụng được phát triển bởi nhóm FTeam",
-            style: TextStyle(color: AppColor.paraColor),
-          )
         ],
       ),
     );

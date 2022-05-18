@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/sign_in/sign_in_screen.dart';
 import 'package:mobile_ui/widgets/app_text_field.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
@@ -28,23 +29,6 @@ class _SignUpFormState extends State<SignUpForm> {
       key: _formKey,
       child: Column(
         children: [
-          SizedBox(height: Dimensions.number20),
-          Container(
-            width: double.maxFinite,
-            height: Dimensions.number45 + Dimensions.number10,
-            child: Column(
-              children: [
-                Text(
-                  "FTEAM SHOP",
-                  style: TextStyle(
-                      fontSize: Dimensions.font20 * 2,
-                      color: AppColor.mainColor,
-                      fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: Dimensions.number15),
           AppTextField(
               textController: fullNameText,
               hintText: "Tên",
@@ -68,17 +52,20 @@ class _SignUpFormState extends State<SignUpForm> {
               hintText: "Xác nhận mật khẩu",
               icon: Icons.key),
           SizedBox(height: Dimensions.number20),
-          Container(
-            height: Dimensions.screenHeight / 13,
-            width: Dimensions.screenWidth / 2,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.border30),
-                color: AppColor.mainColor),
-            child: Center(
-              child: BigText(
-                text: "Đăng kí",
-                size: Dimensions.font26,
-                color: Colors.white,
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, HomePage.routeName),
+            child: Container(
+              height: Dimensions.screenHeight / 13,
+              width: Dimensions.screenWidth / 2,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.border30),
+                  color: AppColor.mainColor),
+              child: Center(
+                child: BigText(
+                  text: "Đăng kí",
+                  size: Dimensions.font26,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
@@ -93,11 +80,6 @@ class _SignUpFormState extends State<SignUpForm> {
               ),
             ),
           ),
-          SizedBox(height: Dimensions.number45),
-          Text(
-            "@Ứng dụng được phát triển bởi nhóm FTeam",
-            style: TextStyle(color: AppColor.paraColor),
-          )
         ],
       ),
     );
