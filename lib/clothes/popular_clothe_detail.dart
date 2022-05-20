@@ -11,6 +11,7 @@ import '../widgets/icon_and_text_widgets.dart';
 import '../widgets/small_text.dart';
 
 class PopularClotheDetail extends StatelessWidget {
+  static String routeName = "/popularClotheDetail";
   const PopularClotheDetail({Key? key}) : super(key: key);
 
   @override

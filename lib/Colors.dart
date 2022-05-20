@@ -9,4 +9,5 @@ class AppColor {
   static final Color paraColor = const Color(0xFF8f837f);
   static final Color mainBlackColor = const Color(0xFF332d2b);
   static final Color yellowColor = const Color(0xFFffd379);
+  static final Color kSecondaryColor = Color(0xFF979797);
 }

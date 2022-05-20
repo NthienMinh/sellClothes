@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/cart/cart_page.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/main_screen/search_field.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
 
@@ -39,25 +40,14 @@ class _MainClothesPageState extends State<MainClothesPage> {
                     )
                   ],
                 ),
-                // Center(
-                //   child: Container(
-                //     width: Dimensions.number45,
-                //     height: Dimensions.number45,
-
-                //     child: Icon(
-                //       Icons.search,
-                //       size: Dimensions.number24,
-                //       color: Colors.white,
-                //     ),
-                //   ),
-                // ),
+                SearchField(),
                 GestureDetector(
                   onTap: () => Navigator.pushNamed(context, CartPage.routeName),
                   child: AppIcon(
                     icon: Icons.shopping_cart,
                     iconColor: Colors.white,
                     backgroundColor: AppColor.mainColor,
-                    size: Dimensions.number25,
+                    size: Dimensions.number40,
                   ),
                 )
               ],

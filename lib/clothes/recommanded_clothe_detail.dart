@@ -7,6 +7,7 @@ import 'package:mobile_ui/widgets/big_text.dart';
 import 'package:mobile_ui/widgets/text_widget.dart';
 
 class recommandedClotheDetail extends StatelessWidget {
+  static String routeName = "/recommandedClotheDetail";
   const recommandedClotheDetail({Key? key}) : super(key: key);
 
   @override

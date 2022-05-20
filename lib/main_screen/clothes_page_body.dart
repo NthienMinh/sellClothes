@@ -2,6 +2,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
+import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/widgets/app_column.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
@@ -60,57 +62,66 @@ class _ClothePageBodyState extends State<ClothePageBody> {
                   right: Dimensions.number10,
                   bottom: Dimensions.number5),
               child: Row(children: [
-                Container(
-                  width: Dimensions.number100,
-                  height: Dimensions.number100,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.border15),
-                      color: Colors.white38,
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage("assets/image/somi01.png"))),
-                ),
-                Expanded(
+                GestureDetector(
+                  onTap: () => Navigator.pushNamed(
+                      context, PopularClotheDetail.routeName),
                   child: Container(
-                    height: Dimensions.number85,
+                    width: Dimensions.number100,
+                    height: Dimensions.number100,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(Dimensions.border15),
-                          bottomRight: Radius.circular(Dimensions.border15)),
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          left: Dimensions.number10,
-                          right: Dimensions.number10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          BigText(text: "Sơ mi trắng đen "),
-                          SizedBox(height: Dimensions.number10),
-                          SmallText(
-                              text: "Chất liệu thân thiện với môi trường"),
-                          SizedBox(height: Dimensions.number10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              IconAndTextWidget(
-                                  icon: Icons.checkroom,
-                                  iconColor: Colors.black,
-                                  text: "Cotton"),
-                              SizedBox(width: Dimensions.number15),
-                              IconAndTextWidget(
-                                  icon: Icons.location_on,
-                                  iconColor: AppColor.mainColor,
-                                  text: "Hồ Chí Minh")
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.border15),
+                        color: Colors.white38,
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage("assets/image/somi01.png"))),
                   ),
-                )
+                ),
+                GestureDetector(
+                    onTap: () => Navigator.pushNamed(
+                        context, PopularClotheDetail.routeName),
+                    child: Expanded(
+                      child: Container(
+                        height: Dimensions.number85,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(Dimensions.border15),
+                              bottomRight:
+                                  Radius.circular(Dimensions.border15)),
+                          color: Colors.white,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: Dimensions.number10,
+                              right: Dimensions.number10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              BigText(text: "Sơ mi trắng đen "),
+                              SizedBox(height: Dimensions.number10),
+                              SmallText(
+                                  text: "Chất liệu thân thiện với môi trường"),
+                              SizedBox(height: Dimensions.number10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  IconAndTextWidget(
+                                      icon: Icons.checkroom,
+                                      iconColor: Colors.black,
+                                      text: "Cotton"),
+                                  SizedBox(width: Dimensions.number15),
+                                  IconAndTextWidget(
+                                      icon: Icons.location_on,
+                                      iconColor: AppColor.mainColor,
+                                      text: "Hồ Chí Minh")
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )),
               ]),
             );
           }),
@@ -151,12 +162,15 @@ class _ClothePageBodyState extends State<ClothePageBody> {
                 BoxShadow(color: Colors.white, offset: Offset(-5, 0))
               ]),
           child: Container(
-            padding: EdgeInsets.only(
-                top: Dimensions.number10,
-                left: Dimensions.number15,
-                right: Dimensions.number15),
-            child: AppColumn(text: "Sơ mi trắng đen"),
-          ),
+              padding: EdgeInsets.only(
+                  top: Dimensions.number10,
+                  left: Dimensions.number15,
+                  right: Dimensions.number15),
+              child: GestureDetector(
+                onTap: () => Navigator.pushNamed(
+                    context, recommandedClotheDetail.routeName),
+                child: AppColumn(text: "Sơ mi trắng đen"),
+              )),
         ),
       )
     ]);
