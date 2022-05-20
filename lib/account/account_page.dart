@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/sign_in/sign_in_screen.dart';
 import 'package:mobile_ui/widgets/account_widget.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
@@ -37,14 +38,6 @@ class AccountPage extends StatelessWidget {
                 ],
               ),
             ),
-
-            // AppIcon(
-            //   icon: Icons.person,
-            //   backgroundColor: AppColor.mainColor,
-            //   size: Dimensions.number100 * 1.15,
-            //   iconColor: Colors.white,
-            //   iconSize: Dimensions.number70,
-            // ),
             SizedBox(height: Dimensions.number25),
             Expanded(
               child: SingleChildScrollView(
@@ -116,17 +109,26 @@ class AccountPage extends StatelessWidget {
                           text: "Giới thiệu",
                         )),
                     SizedBox(height: Dimensions.number10),
-                    //Đăng xuất
-                    AccountWidget(
-                        appIcon: AppIcon(
-                          icon: Icons.exit_to_app,
-                          backgroundColor: Colors.red,
-                          size: Dimensions.number45,
-                          iconColor: Colors.white,
-                          iconSize: Dimensions.number24,
-                        ),
-                        bigText: BigText(
-                          text: "Đăng xuất",
+                    GestureDetector(
+                        onTap: () => Navigator.pushNamed(
+                            context, SignInScreen.routeName),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(Dimensions.border30),
+                              color: AppColor.mainColor),
+                          child: //Đăng xuất
+                              AccountWidget(
+                                  appIcon: AppIcon(
+                                    icon: Icons.exit_to_app,
+                                    backgroundColor: Colors.red,
+                                    size: Dimensions.number45,
+                                    iconColor: Colors.white,
+                                    iconSize: Dimensions.number24,
+                                  ),
+                                  bigText: BigText(
+                                    text: "Đăng xuất",
+                                  )),
                         )),
                   ],
                 ),

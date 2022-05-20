@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mobile_ui/account/about.dart';
 import 'package:mobile_ui/cart/cart_page.dart';
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
@@ -16,4 +17,5 @@ final Map<String, WidgetBuilder> routes = {
   CartPage.routeName: (context) => CartPage(),
   recommandedClotheDetail.routeName: (context) => recommandedClotheDetail(),
   PopularClotheDetail.routeName: (context) => PopularClotheDetail(),
+  AboutScreen.routeName: (context) => AboutScreen(),
 };

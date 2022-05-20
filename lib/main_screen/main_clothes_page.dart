@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/cart/cart_page.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/main_screen/popular_product.dart';
 import 'package:mobile_ui/main_screen/search_field.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
+import 'package:mobile_ui/widgets/small_text.dart';
 
-import 'clothes_page_body.dart';
+import 'recommanded_clothes_page_body.dart';
 
 class MainClothesPage extends StatefulWidget {
   const MainClothesPage({Key? key}) : super(key: key);
@@ -19,43 +21,80 @@ class MainClothesPage extends StatefulWidget {
 class _MainClothesPageState extends State<MainClothesPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
-      children: [
-        Container(
-          child: Container(
-            margin: EdgeInsets.only(
-                top: Dimensions.number40, bottom: Dimensions.number15),
-            padding: EdgeInsets.only(
-                left: Dimensions.number15, right: Dimensions.number15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    BigText(
-                      text: "FTeam",
-                      color: AppColor.mainColor,
-                      size: Dimensions.font20,
-                    )
-                  ],
-                ),
-                SearchField(),
-                GestureDetector(
-                  onTap: () => Navigator.pushNamed(context, CartPage.routeName),
-                  child: AppIcon(
-                    icon: Icons.shopping_cart,
-                    iconColor: Colors.white,
-                    backgroundColor: AppColor.mainColor,
-                    size: Dimensions.number40,
+    return SafeArea(
+        child: SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            child: Container(
+              margin: EdgeInsets.only(
+                  top: Dimensions.number40, bottom: Dimensions.number15),
+              padding: EdgeInsets.only(
+                  left: Dimensions.number15, right: Dimensions.number15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      BigText(
+                        text: "FTeam",
+                        color: AppColor.mainColor,
+                        size: Dimensions.font20,
+                      )
+                    ],
                   ),
-                )
-              ],
+                  SearchField(),
+                  GestureDetector(
+                    onTap: () =>
+                        Navigator.pushNamed(context, CartPage.routeName),
+                    child: AppIcon(
+                      icon: Icons.shopping_cart,
+                      iconColor: Colors.white,
+                      backgroundColor: AppColor.mainColor,
+                      size: Dimensions.number40,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-        Expanded(child: SingleChildScrollView(child: ClothePageBody()))
-      ],
+          SizedBox(height: Dimensions.number5),
+          Container(
+            margin: EdgeInsets.only(left: Dimensions.number20),
+            child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+              BigText(text: "Sản phẩm"),
+              SizedBox(width: Dimensions.number10),
+              Container(child: BigText(text: "-", color: Colors.black26)),
+              SizedBox(width: Dimensions.number10),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: SmallText(
+                  text: "Yêu thích",
+                ),
+              )
+            ]),
+          ),
+          SizedBox(height: Dimensions.number10),
+          RecommandedClothePageBody(),
+          SizedBox(height: Dimensions.number20),
+          //text
+          Container(
+            margin: EdgeInsets.only(left: Dimensions.number20),
+            child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+              BigText(text: "Sản phẩm"),
+              SizedBox(width: Dimensions.number10),
+              Container(child: BigText(text: "-", color: Colors.black26)),
+              SizedBox(width: Dimensions.number10),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: SmallText(text: "Phổ biến"),
+              )
+            ]),
+          ),
+          SizedBox(height: Dimensions.number20),
+          popularProducts()
+        ],
+      ),
     ));
   }
 }
