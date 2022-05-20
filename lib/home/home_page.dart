@@ -8,7 +8,7 @@ import 'package:mobile_ui/cart/cart_history.dart';
 import 'package:mobile_ui/cart/cart_page.dart';
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
-import 'package:mobile_ui/home/main_clothes_page.dart';
+import 'package:mobile_ui/main_screen/main_clothes_page.dart';
 
 import 'package:mobile_ui/page/no_data_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -25,13 +25,6 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   late PersistentTabController _controller;
 
-  List pages = [
-    MainClothesPage(),
-    Container(child: Center(child: Text("page 1"))),
-    Container(child: Center(child: Text("page 2"))),
-    Container(child: Center(child: Text("page 3")))
-  ];
-
   void onTapNav(int index) {
     setState(() {
       _selectedIndex = index;
@@ -44,40 +37,6 @@ class _HomePageState extends State<HomePage> {
 
     _controller = PersistentTabController(initialIndex: 0);
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //       body: pages[_selectedIndex],
-  //       bottomNavigationBar: BottomNavigationBar(
-  //         selectedItemColor: AppColor.mainColor,
-  //         unselectedItemColor: AppColor.signColor,
-  //         showSelectedLabels: false,
-  //         showUnselectedLabels: false,
-  //         selectedFontSize: 0,
-  //         unselectedFontSize: 0,
-  //         currentIndex: _selectedIndex,
-  //         onTap: onTapNav,
-  //         items: const <BottomNavigationBarItem>[
-  //           BottomNavigationBarItem(
-  //             icon: Icon(Icons.home_outlined),
-  //             label: 'Home',
-  //           ),
-  //           BottomNavigationBarItem(
-  //             icon: Icon(Icons.archive),
-  //             label: 'History',
-  //           ),
-  //           BottomNavigationBarItem(
-  //             icon: Icon(Icons.shopping_cart),
-  //             label: 'Cart',
-  //           ),
-  //           BottomNavigationBarItem(
-  //             icon: Icon(Icons.person),
-  //             label: 'Me',
-  //           )
-  //         ],
-  //       ));
-  // }
 
   List<Widget> _buildScreens() {
     return [MainClothesPage(), CartPage(), CartHistory(), AccountPage()];

@@ -7,6 +7,7 @@ import 'package:mobile_ui/widgets/big_text.dart';
 import 'package:mobile_ui/widgets/small_text.dart';
 
 class CartPage extends StatelessWidget {
+  static String routeName = "/sign_in";
   const CartPage({Key? key}) : super(key: key);
 
   @override

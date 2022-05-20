@@ -20,21 +20,6 @@ class _ClothePageBodyState extends State<ClothePageBody> {
   var _currPageValue = 0.0;
   double _scaleFactor = 0.8;
   double _height = Dimensions.pageViewContainer;
-  //@override
-  // void initState() {
-  //   super.initState();
-  //   pageController.addListener(() {
-  //     setState(() {
-  //       _currPageValue = pageController.page!;
-  //       print("Current value is" + _currPageValue.toString());
-  //     });
-  //   });
-  // }
-
-  // @override
-  // void dispose() {
-  //   pageController.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {

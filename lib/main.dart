@@ -6,7 +6,7 @@ import 'package:mobile_ui/cart/cart_page.dart';
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
 import 'package:mobile_ui/home/home_page.dart';
-import 'package:mobile_ui/home/main_clothes_page.dart';
+import 'package:mobile_ui/main_screen/main_clothes_page.dart';
 import 'package:mobile_ui/sign_up/sign_up_screen.dart';
 
 Future<void> main() async {
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: SignInScreen.routeName,
+      initialRoute: HomePage.routeName,
     );
   }
 }
