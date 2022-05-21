@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/cart/cart_screen.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
 import 'package:mobile_ui/widgets/text_widget.dart';
@@ -22,7 +24,12 @@ class PopularClotheDetail extends StatelessWidget {
             toolbarHeight: Dimensions.number70,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [AppIcon(icon: Icons.shopping_cart_outlined)],
+              children: [
+                GestureDetector(
+                    onTap: () =>
+                        Navigator.pushNamed(context, Cartscreen.routeName),
+                    child: AppIcon(icon: Icons.shopping_cart_outlined))
+              ],
             ),
             stretch: true,
             pinned: true,
