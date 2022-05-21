@@ -4,14 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/account/account.dart';
-import 'package:mobile_ui/account/account_page.dart';
-
-import 'package:mobile_ui/cart/cart_page.dart';
-import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
-import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
+import 'package:mobile_ui/all_products/all_products_screen.dart';
 import 'package:mobile_ui/history/history.dart';
 import 'package:mobile_ui/main_screen/main_clothes_page.dart';
-
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,7 +35,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   List<Widget> _buildScreens() {
-    return [MainClothesPage(), CartPage(), HistoryScreen(), AccountScreen()];
+    return [
+      MainClothesPage(),
+      AllProductsScreen(),
+      HistoryScreen(),
+      AccountScreen()
+    ];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {

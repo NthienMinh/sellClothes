@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_ui/routes.dart';
 import 'package:mobile_ui/sign_in/sign_in_screen.dart';
-import 'package:mobile_ui/cart/cart_page.dart';
-import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
-import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
-import 'package:mobile_ui/home/home_page.dart';
-import 'package:mobile_ui/main_screen/main_clothes_page.dart';
-import 'package:mobile_ui/sign_up/sign_up_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +30,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: HomePage.routeName,
+      initialRoute: SignInScreen.routeName,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
@@ -37,7 +38,7 @@ class _popularProductsState extends State<popularProducts> {
       children: [
         GestureDetector(
           onTap: () =>
-              Navigator.pushNamed(context, recommandedClotheDetail.routeName),
+              Navigator.pushNamed(context, PopularClotheDetail.routeName),
           child: Row(
             children: [
               Container(

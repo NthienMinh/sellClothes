@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
-import 'package:mobile_ui/cart/cart_page.dart';
+import 'package:mobile_ui/cart/cart_screen.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/main_screen/banner.dart';
 import 'package:mobile_ui/main_screen/popular_product.dart';
 import 'package:mobile_ui/main_screen/search_field.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
@@ -46,18 +47,21 @@ class _MainClothesPageState extends State<MainClothesPage> {
                   SearchField(),
                   GestureDetector(
                     onTap: () =>
-                        Navigator.pushNamed(context, CartPage.routeName),
-                    child: AppIcon(
-                      icon: Icons.shopping_cart,
-                      iconColor: Colors.white,
-                      backgroundColor: AppColor.mainColor,
-                      size: Dimensions.number40,
+                        Navigator.pushNamed(context, Cartscreen.routeName),
+                    child: Container(
+                      child: AppIcon(
+                        icon: Icons.shopping_cart,
+                        iconColor: Colors.white,
+                        backgroundColor: AppColor.mainColor,
+                        size: Dimensions.number40,
+                      ),
                     ),
                   )
                 ],
               ),
             ),
           ),
+          DiscountBanner(),
           SizedBox(height: Dimensions.number5),
           Container(
             margin: EdgeInsets.only(left: Dimensions.number20),
