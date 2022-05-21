@@ -3,6 +3,7 @@ import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/all_products/all_products_form.dart';
 import 'package:mobile_ui/all_products/search_field.dart';
 import 'package:mobile_ui/cart/cart_screen.dart';
+import 'package:mobile_ui/cart_history/cart_history_screen.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
@@ -30,7 +31,7 @@ class _BodyState extends State<Body> {
                 SizedBox(width: Dimensions.number15),
                 GestureDetector(
                   onTap: () =>
-                      Navigator.pushNamed(context, Cartscreen.routeName),
+                      Navigator.pushNamed(context, CartScreen.routeName),
                   child: AppIcon(
                     icon: Icons.shopping_cart,
                     iconColor: Colors.white,

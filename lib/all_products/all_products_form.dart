@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
-import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
 import 'package:mobile_ui/widgets/icon_and_text_widgets.dart';

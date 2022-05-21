@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
-import 'package:mobile_ui/cart/cart_screen.dart';
+import 'package:mobile_ui/cart_history/cart_history_screen.dart';
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/forgot_password/forgot_password.dart';

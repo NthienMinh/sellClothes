@@ -2,7 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
-import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
+
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/widgets/app_column.dart';
@@ -76,8 +76,8 @@ class _RecommandedClothePageBodyState extends State<RecommandedClothePageBody> {
                   left: Dimensions.number15,
                   right: Dimensions.number15),
               child: GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                    context, RecommandedClotheDetail.routeName),
+                onTap: () =>
+                    Navigator.pushNamed(context, PopularClotheDetail.routeName),
                 child: AppColumn(text: "Sơ mi trắng đen"),
               )),
         ),

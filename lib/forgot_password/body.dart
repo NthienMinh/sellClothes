@@ -36,7 +36,7 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: Dimensions.number7),
             SmallText(
-              text: "Chúng tôi sẽ gửi mật khẩu mới tới Email của bạn!",
+              text: "Mật khẩu mới sẽ được gửi tới Email của bạn!",
               size: Dimensions.font16,
               color: AppColor.paraColor,
             ),

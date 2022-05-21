@@ -3,7 +3,9 @@ import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/account/about.dart';
 import 'package:mobile_ui/account/account_menu.dart';
 import 'package:mobile_ui/account/account_pic.dart';
+import 'package:mobile_ui/address/address_setup_screen.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/profile/profile_screen.dart';
 import 'package:mobile_ui/sign_in/sign_in_screen.dart';
 
 class Body extends StatelessWidget {
@@ -21,7 +23,7 @@ class Body extends StatelessWidget {
             text: "Thông tin tài khoản",
             icon: Icons.person,
             press: () {
-              Navigator.pushNamed(context, SignInScreen.routeName);
+              Navigator.pushNamed(context, ProfileSetUpScreen.routeName);
             },
             color: AppColor.mainColor,
           ),
@@ -29,7 +31,7 @@ class Body extends StatelessWidget {
             text: "Địa chỉ",
             icon: Icons.location_on,
             press: () {
-              Navigator.pushNamed(context, SignInScreen.routeName);
+              Navigator.pushNamed(context, AddressSetUpScreen.routeName);
             },
             color: AppColor.mainColor,
           ),

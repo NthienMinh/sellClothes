@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:mobile_ui/cart/cart_screen.dart';
-import 'package:mobile_ui/clothes/recommanded_clothe_detail.dart';
+import 'package:mobile_ui/cart_history/cart_history_screen.dart';
 import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/main_screen/popular_product.dart';
 import 'package:mobile_ui/routes.dart';

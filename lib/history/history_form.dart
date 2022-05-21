@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/cart_history/cart_history_screen.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
 import 'package:mobile_ui/widgets/small_text.dart';
@@ -54,26 +55,30 @@ class _HistoryFormState extends State<HistoryForm> {
                                   )
                                 : Container();
                           })),
-                      Container(
-                        height: Dimensions.number70,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: Dimensions.number20,
-                                  vertical: Dimensions.number5),
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(Dimensions.number5),
-                                  border: Border.all(
-                                      width: 1, color: AppColor.mainColor)),
-                              child: SmallText(
-                                text: "Chi tiết",
-                                color: AppColor.mainColor,
+                      GestureDetector(
+                        onTap: () => Navigator.pushNamed(
+                            context, CartHistoryscreen.routeName),
+                        child: Container(
+                          height: Dimensions.number70,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: Dimensions.number20,
+                                    vertical: Dimensions.number5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        Dimensions.number5),
+                                    border: Border.all(
+                                        width: 1, color: AppColor.mainColor)),
+                                child: SmallText(
+                                  text: "Chi tiết",
+                                  color: AppColor.mainColor,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       )
                     ],

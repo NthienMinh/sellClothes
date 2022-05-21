@@ -52,11 +52,11 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.archivebox), label: "Home"),
+              icon: Icon(CupertinoIcons.archivebox), label: "Products"),
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.cart), label: "Home"),
+              icon: Icon(CupertinoIcons.cart), label: "History"),
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.person), label: "Home"),
+              icon: Icon(CupertinoIcons.person), label: "Account"),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: AppColor.mainColor,

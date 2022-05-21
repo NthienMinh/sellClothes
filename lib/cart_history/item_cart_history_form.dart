@@ -3,15 +3,14 @@ import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
 
-class ItemCartForm extends StatefulWidget {
-  const ItemCartForm({Key? key}) : super(key: key);
+class ItemCartHistoryForm extends StatefulWidget {
+  const ItemCartHistoryForm({Key? key}) : super(key: key);
 
   @override
-  State<ItemCartForm> createState() => _ItemCartFormState();
+  State<ItemCartHistoryForm> createState() => _ItemCartHistoryFormState();
 }
 
-class _ItemCartFormState extends State<ItemCartForm> {
-  int count = 1;
+class _ItemCartHistoryFormState extends State<ItemCartHistoryForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,41 +59,32 @@ class _ItemCartFormState extends State<ItemCartForm> {
                                 color: Colors.redAccent,
                                 size: Dimensions.font16,
                               ),
-                              Container(
-                                padding: EdgeInsets.only(
-                                    left: Dimensions.number15,
-                                    right: Dimensions.number15,
-                                    top: Dimensions.number5,
-                                    bottom: Dimensions.number5),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                        Dimensions.border20),
-                                    color: Colors.white),
-                                child: Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        if (count > 0) {
-                                          count--;
-                                        }
-                                        setState(() {});
-                                      },
-                                      child: Icon(Icons.remove,
-                                          color: AppColor.signColor),
-                                    ),
-                                    SizedBox(width: Dimensions.number7),
-                                    BigText(text: count.toString()),
-                                    SizedBox(width: Dimensions.number7),
-                                    GestureDetector(
-                                        onTap: () {
-                                          count++;
-                                          setState(() {});
-                                        },
-                                        child: Icon(Icons.add,
-                                            color: AppColor.signColor))
-                                  ],
-                                ),
-                              )
+                              BigText(
+                                text: "Số lượng :" + " 1",
+                                color: const Color(0xFFccc7c5),
+                                size: Dimensions.font16,
+                              ),
+                              // Container(
+                              //   padding: EdgeInsets.only(
+                              //       left: Dimensions.number15,
+                              //       right: Dimensions.number15,
+                              //       top: Dimensions.number5,
+                              //       bottom: Dimensions.number5),
+                              //   decoration: BoxDecoration(
+                              //       borderRadius: BorderRadius.circular(
+                              //           Dimensions.border20),
+                              //       color: Colors.white),
+                              //   child: Row(
+                              //     children: [
+                              //       Icon(Icons.remove,
+                              //           color: AppColor.signColor),
+                              //       SizedBox(width: Dimensions.number7),
+                              //       BigText(text: "0"),
+                              //       SizedBox(width: Dimensions.number7),
+                              //       Icon(Icons.add, color: AppColor.signColor)
+                              //     ],
+                              //   ),
+                              // )
                             ],
                           )
                         ],

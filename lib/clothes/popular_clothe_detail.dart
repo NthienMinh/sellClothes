@@ -2,16 +2,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/cart/cart_screen.dart';
+import 'package:mobile_ui/cart_history/cart_history_screen.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
 import 'package:mobile_ui/widgets/text_widget.dart';
 
-class PopularClotheDetail extends StatelessWidget {
+class PopularClotheDetail extends StatefulWidget {
   static String routeName = "/popularClotheDetail";
   const PopularClotheDetail({Key? key}) : super(key: key);
 
+  @override
+  State<PopularClotheDetail> createState() => _PopularClotheDetailState();
+}
+
+class _PopularClotheDetailState extends State<PopularClotheDetail> {
+  int count = 1;
+  int price = 150000;
+  int total = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +36,7 @@ class PopularClotheDetail extends StatelessWidget {
               children: [
                 GestureDetector(
                     onTap: () =>
-                        Navigator.pushNamed(context, Cartscreen.routeName),
+                        Navigator.pushNamed(context, CartScreen.routeName),
                     child: AppIcon(icon: Icons.shopping_cart_outlined))
               ],
             ),
@@ -96,21 +105,37 @@ class PopularClotheDetail extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(
-                    iconSize: Dimensions.number15,
-                    iconColor: Colors.white,
-                    backgroundColor: AppColor.mainColor,
-                    icon: Icons.remove),
+                GestureDetector(
+                  onTap: () {
+                    if (count > 1) {
+                      count--;
+                      total = price * count;
+                    }
+                    setState(() {});
+                  },
+                  child: AppIcon(
+                      iconSize: Dimensions.number15,
+                      iconColor: Colors.white,
+                      backgroundColor: AppColor.mainColor,
+                      icon: Icons.remove),
+                ),
                 BigText(
-                  text: "150.000 vnđ " + "x" + " 0",
+                  text: price.toString() + " vnđ" + " x " + count.toString(),
                   color: AppColor.mainBlackColor,
                   size: Dimensions.font26,
                 ),
-                AppIcon(
-                    iconSize: Dimensions.number15,
-                    iconColor: Colors.white,
-                    backgroundColor: AppColor.mainColor,
-                    icon: Icons.add)
+                GestureDetector(
+                  onTap: () {
+                    count++;
+                    total = price * count;
+                    setState(() {});
+                  },
+                  child: AppIcon(
+                      iconSize: Dimensions.number15,
+                      iconColor: Colors.white,
+                      backgroundColor: AppColor.mainColor,
+                      icon: Icons.add),
+                )
               ],
             ),
           ),
@@ -129,7 +154,6 @@ class PopularClotheDetail extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                //nút bấm thêm số lượng mua hàng
                 Container(
                   padding: EdgeInsets.only(
                       left: Dimensions.number15,
@@ -151,7 +175,7 @@ class PopularClotheDetail extends StatelessWidget {
                       top: Dimensions.number10,
                       bottom: Dimensions.number10),
                   child: BigText(
-                    text: "150.000 vnđ",
+                    text: total.toString() + " vnđ",
                     size: Dimensions.number15,
                     color: Colors.white,
                   ),

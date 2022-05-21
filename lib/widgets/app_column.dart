@@ -21,35 +21,38 @@ class AppColumn extends StatelessWidget {
           size: Dimensions.font26,
         ),
         SizedBox(height: Dimensions.number10),
-        Row(
-          children: [
-            Wrap(
-              children: List.generate(
-                  5,
-                  (index) => Icon(
-                        Icons.star,
-                        color: AppColor.mainColor,
-                        size: Dimensions.number15,
-                      )),
-            ),
-            SizedBox(width: Dimensions.number5),
-            SmallText(text: "4.5"),
-            SizedBox(width: Dimensions.number7),
-            SmallText(text: "1256"),
-            SizedBox(width: Dimensions.number5),
-            SmallText(text: "Lượt mua")
-          ],
-        ),
+        SmallText(text: "Chất liệu thân thiện với môi trường"),
+        // Row(
+        //   children: [
+        //     Wrap(
+        //       children: List.generate(
+        //           5,
+        //           (index) => Icon(
+        //                 Icons.star,
+        //                 color: AppColor.mainColor,
+        //                 size: Dimensions.number15,
+        //               )),
+        //     ),
+        //     SizedBox(width: Dimensions.number5),
+        //     SmallText(text: "4.5"),
+        //     SizedBox(width: Dimensions.number7),
+        //     SmallText(text: "1256"),
+        //     SizedBox(width: Dimensions.number5),
+        //     SmallText(text: "Lượt mua")
+        //   ],
+        // ),
         SizedBox(height: Dimensions.number10),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconAndTextWidget(
-                icon: Icons.auto_awesome,
-                iconColor: Colors.redAccent,
-                text: "Yêu thích"),
+            // IconAndTextWidget(
+            //     icon: Icons.auto_awesome,
+            //     iconColor: Colors.redAccent,
+            //     text: "Yêu thích"),
+            SizedBox(width: Dimensions.number15),
             IconAndTextWidget(
                 icon: Icons.checkroom, iconColor: Colors.black, text: "Cotton"),
+            SizedBox(width: Dimensions.number70),
             IconAndTextWidget(
                 icon: Icons.location_on,
                 iconColor: AppColor.mainColor,

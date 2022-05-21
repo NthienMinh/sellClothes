@@ -1,9 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/cart/item_cart_form.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
+import 'package:mobile_ui/widgets/big_text.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -50,8 +54,65 @@ class _BodyState extends State<Body> {
             top: Dimensions.number70,
             left: Dimensions.number15,
             right: Dimensions.number15,
-            bottom: 0,
-            child: ItemCartForm())
+            bottom: Dimensions.number70,
+            child: ItemCartForm()),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: Dimensions.number70,
+            padding: EdgeInsets.only(
+                left: Dimensions.number25,
+                right: Dimensions.number25,
+                top: Dimensions.number15,
+                bottom: Dimensions.number15),
+            decoration: BoxDecoration(
+                color: AppColor.buttonBackgroundColor,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Dimensions.border30),
+                    topRight: Radius.circular(Dimensions.border30))),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(
+                      left: Dimensions.number15,
+                      right: Dimensions.number15,
+                      top: Dimensions.number10,
+                      bottom: Dimensions.number10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.number15),
+                      color: Colors.white),
+                  child: Column(
+                    children: [
+                      BigText(
+                        text: "1.500.000 vnđ",
+                        color: Colors.red,
+                      )
+                    ],
+                  ),
+                ),
+                //Nút bấm thêm hàng, thành tiền
+                Container(
+                  alignment: Alignment.center,
+                  width: Dimensions.number100 * 1.3,
+                  padding: EdgeInsets.only(
+                      left: Dimensions.number20,
+                      right: Dimensions.number20,
+                      top: Dimensions.number10,
+                      bottom: Dimensions.number10),
+                  child: BigText(
+                    text: "Thanh toán",
+                    size: Dimensions.number15,
+                    color: Colors.white,
+                  ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.border20),
+                      color: AppColor.mainColor),
+                )
+              ],
+            ),
+          ),
+        )
       ]),
     );
   }
