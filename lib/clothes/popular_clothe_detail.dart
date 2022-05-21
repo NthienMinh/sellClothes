@@ -21,11 +21,8 @@ class PopularClotheDetail extends StatelessWidget {
           SliverAppBar(
             toolbarHeight: Dimensions.number70,
             title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                AppIcon(icon: Icons.clear),
-                AppIcon(icon: Icons.shopping_cart_outlined)
-              ],
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [AppIcon(icon: Icons.shopping_cart_outlined)],
             ),
             stretch: true,
             pinned: true,

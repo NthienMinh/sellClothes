@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/widgets/app_column.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
 import 'package:mobile_ui/widgets/text_widget.dart';
@@ -10,10 +11,16 @@ import '../widgets/big_text.dart';
 import '../widgets/icon_and_text_widgets.dart';
 import '../widgets/small_text.dart';
 
-class recommandedClotheDetail extends StatelessWidget {
-  static String routeName = "/recommandedClotheDetail";
-  const recommandedClotheDetail({Key? key}) : super(key: key);
+class RecommandedClotheDetail extends StatefulWidget {
+  static String routeName = "/recommandedClotheDetaisasfsl";
+  const RecommandedClotheDetail({Key? key}) : super(key: key);
 
+  @override
+  State<RecommandedClotheDetail> createState() =>
+      _RecommandedClotheDetailState();
+}
+
+class _RecommandedClotheDetailState extends State<RecommandedClotheDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +46,10 @@ class recommandedClotheDetail extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.arrow_back_ios_new),
+                GestureDetector(
+                    onTap: () =>
+                        Navigator.pushNamed(context, HomePage.routeName),
+                    child: AppIcon(icon: Icons.arrow_back_ios_new)),
                 AppIcon(icon: Icons.shopping_cart_outlined)
               ],
             )),

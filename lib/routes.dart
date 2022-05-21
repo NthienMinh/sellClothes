@@ -10,12 +10,13 @@ import 'package:mobile_ui/sign_in/sign_in_screen.dart';
 import 'package:mobile_ui/sign_up/sign_up_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
-  HomePage.routeName: (context) => HomePage(),
+  HomePage.routeName: (context) => const HomePage(),
   SignInScreen.routeName: (context) => SignInScreen(),
   SignUpScreen.routeName: (context) => SignUpScreen(),
   ForgotPassWordScreen.routeName: (context) => ForgotPassWordScreen(),
   Cartscreen.routeName: (context) => Cartscreen(),
-  recommandedClotheDetail.routeName: (context) => recommandedClotheDetail(),
-  PopularClotheDetail.routeName: (context) => PopularClotheDetail(),
+  RecommandedClotheDetail.routeName: (context) =>
+      const RecommandedClotheDetail(),
+  PopularClotheDetail.routeName: (context) => const PopularClotheDetail(),
   AboutScreen.routeName: (context) => AboutScreen(),
 };

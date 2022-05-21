@@ -17,6 +17,7 @@ class Body extends StatelessWidget {
             size: 24,
             color: Colors.white,
           ),
+          automaticallyImplyLeading: false,
         ),
         body: HistoryForm());
   }

@@ -10,12 +10,14 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: AppColor.mainColor,
-          title: BigText(
-            text: "Tài Khoản",
-            size: 24,
-            color: Colors.white,
-          )),
+        backgroundColor: AppColor.mainColor,
+        title: BigText(
+          text: "Tài Khoản",
+          size: 24,
+          color: Colors.white,
+        ),
+        automaticallyImplyLeading: false,
+      ),
       body: Body(),
     );
   }

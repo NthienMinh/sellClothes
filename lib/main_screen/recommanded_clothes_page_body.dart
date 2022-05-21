@@ -26,17 +26,15 @@ class _RecommandedClothePageBodyState extends State<RecommandedClothePageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Container(
-        height: Dimensions.pageView,
-        child: PageView.builder(
-            controller: pageController,
-            itemCount: 5,
-            itemBuilder: (context, position) {
-              return _buildPageItem(position);
-            }),
-      ),
-    ]);
+    return SizedBox(
+      height: Dimensions.pageView,
+      child: PageView.builder(
+          controller: pageController,
+          itemCount: 5,
+          itemBuilder: (context, position) {
+            return _buildPageItem(position);
+          }),
+    );
   }
 
   Widget _buildPageItem(int index) {
@@ -79,7 +77,7 @@ class _RecommandedClothePageBodyState extends State<RecommandedClothePageBody> {
                   right: Dimensions.number15),
               child: GestureDetector(
                 onTap: () => Navigator.pushNamed(
-                    context, recommandedClotheDetail.routeName),
+                    context, RecommandedClotheDetail.routeName),
                 child: AppColumn(text: "Sơ mi trắng đen"),
               )),
         ),

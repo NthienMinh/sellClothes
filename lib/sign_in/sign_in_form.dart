@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/cart/cart_screen.dart';
+import 'package:mobile_ui/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/forgot_password/forgot_password.dart';
 import 'package:mobile_ui/home/home_page.dart';
+import 'package:mobile_ui/main_screen/popular_product.dart';
 import 'package:mobile_ui/sign_up/sign_up_screen.dart';
 import 'package:mobile_ui/widgets/app_text_field.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
