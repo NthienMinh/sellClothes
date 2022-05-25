@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mobile_ui/account/about.dart';
-import 'package:mobile_ui/address/address_setup_screen.dart';
+import 'package:mobile_ui/password/pass_setup_screen.dart';
 import 'package:mobile_ui/cart/cart_screen.dart';
 import 'package:mobile_ui/cart_history/cart_history_screen.dart';
 import 'package:mobile_ui/cart_no_data/no_data_page.dart';
@@ -21,7 +21,7 @@ final Map<String, WidgetBuilder> routes = {
   PopularClotheDetail.routeName: (context) => const PopularClotheDetail(),
   AboutScreen.routeName: (context) => AboutScreen(),
   ProfileSetUpScreen.routeName: (context) => const ProfileSetUpScreen(),
-  AddressSetUpScreen.routeName: (context) => const AddressSetUpScreen(),
+  PassSetUpScreen.routeName: (context) => const PassSetUpScreen(),
   NoDataPage.routeName: (context) => const NoDataPage(),
   CartScreen.routeName: (context) => const CartScreen(),
 };

@@ -18,7 +18,7 @@ class _AllProductsFormState extends State<AllProductsForm> {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(top: Dimensions.number10),
-        color: Colors.white,
+        color: Color(0xFFF4F4F4),
         child: ListView(
             physics: const BouncingScrollPhysics(
                 parent: AlwaysScrollableScrollPhysics()),
@@ -40,15 +40,21 @@ class _AllProductsFormState extends State<AllProductsForm> {
                               image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: AssetImage("assets/image/somi01.png")),
-                              borderRadius:
-                                  BorderRadius.circular(Dimensions.border15),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(Dimensions.border15),
+                                  bottomLeft:
+                                      Radius.circular(Dimensions.border15),
+                                  topRight:
+                                      Radius.circular(Dimensions.border15)),
                               color: Colors.white),
                         ),
                         Container(
                           height: Dimensions.number85,
+                          width: Dimensions.number100 * 2.1,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topRight: Radius.circular(Dimensions.border15),
+                                bottomLeft: Radius.circular(Dimensions.number7),
                                 bottomRight:
                                     Radius.circular(Dimensions.border15)),
                             color: Colors.white,
@@ -68,7 +74,8 @@ class _AllProductsFormState extends State<AllProductsForm> {
                                         "Chất liệu thân thiện với môi trường"),
                                 SizedBox(height: Dimensions.number10),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     IconAndTextWidget(
                                         icon: Icons.checkroom,
@@ -77,7 +84,7 @@ class _AllProductsFormState extends State<AllProductsForm> {
                                     SizedBox(width: Dimensions.number15),
                                     IconAndTextWidget(
                                         icon: Icons.location_on,
-                                        iconColor: AppColor.mainColor,
+                                        iconColor: Color(0xFF9F8F80),
                                         text: "Hồ Chí Minh")
                                   ],
                                 )

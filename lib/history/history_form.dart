@@ -61,8 +61,12 @@ class _HistoryFormState extends State<HistoryForm> {
                         child: Container(
                           height: Dimensions.number70,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
+                              SmallText(text: 'Tổng: ', color: Colors.red),
+                              SmallText(
+                                  text: '1.500.000 VND', color: Colors.red),
                               Container(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: Dimensions.number20,
@@ -71,10 +75,10 @@ class _HistoryFormState extends State<HistoryForm> {
                                     borderRadius: BorderRadius.circular(
                                         Dimensions.number5),
                                     border: Border.all(
-                                        width: 1, color: AppColor.mainColor)),
+                                        width: 1, color: Color(0xFF9F8F80))),
                                 child: SmallText(
                                   text: "Chi tiết",
-                                  color: AppColor.mainColor,
+                                  color: Color(0xFF9F8F80),
                                 ),
                               ),
                             ],

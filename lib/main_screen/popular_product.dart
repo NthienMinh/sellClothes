@@ -50,6 +50,7 @@ class _popularProductsState extends State<popularProducts> {
             ),
             Container(
               height: Dimensions.number85,
+              width: Dimensions.number100 * 2.1,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(Dimensions.border15),
@@ -68,7 +69,7 @@ class _popularProductsState extends State<popularProducts> {
                     SmallText(text: "Chất liệu thân thiện với môi trường"),
                     SizedBox(height: Dimensions.number10),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         IconAndTextWidget(
                             icon: Icons.checkroom,
@@ -77,7 +78,7 @@ class _popularProductsState extends State<popularProducts> {
                         SizedBox(width: Dimensions.number15),
                         IconAndTextWidget(
                             icon: Icons.location_on,
-                            iconColor: AppColor.mainColor,
+                            iconColor: Color(0xFF9F8F80),
                             text: "Hồ Chí Minh")
                       ],
                     )

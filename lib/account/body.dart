@@ -3,7 +3,7 @@ import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/account/about.dart';
 import 'package:mobile_ui/account/account_menu.dart';
 import 'package:mobile_ui/account/account_pic.dart';
-import 'package:mobile_ui/address/address_setup_screen.dart';
+import 'package:mobile_ui/password/pass_setup_screen.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/profile/profile_screen.dart';
 import 'package:mobile_ui/sign_in/sign_in_screen.dart';
@@ -25,15 +25,15 @@ class Body extends StatelessWidget {
             press: () {
               Navigator.pushNamed(context, ProfileSetUpScreen.routeName);
             },
-            color: AppColor.mainColor,
+            color: Color(0xFF9F8F80),
           ),
           AccountMenu(
-            text: "Địa chỉ",
+            text: "Đổi mật khẩu",
             icon: Icons.location_on,
             press: () {
-              Navigator.pushNamed(context, AddressSetUpScreen.routeName);
+              Navigator.pushNamed(context, PassSetUpScreen.routeName);
             },
-            color: AppColor.mainColor,
+            color: Color(0xFF9F8F80),
           ),
           AccountMenu(
             text: "Giới thiệu",
@@ -41,7 +41,7 @@ class Body extends StatelessWidget {
             press: () {
               Navigator.pushNamed(context, AboutScreen.routeName);
             },
-            color: AppColor.mainColor,
+            color: Color(0xFF9F8F80),
           ),
           AccountMenu(
             text: "Đăng xuất",

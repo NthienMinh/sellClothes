@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mobile_ui/Colors.dart';
-import 'package:mobile_ui/address/address_setup_form.dart';
+import 'package:mobile_ui/password/pass_setup_form.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/profile/profile_setup_form.dart';
 
@@ -29,7 +29,7 @@ class Body extends StatelessWidget {
             ),
           ),
           SizedBox(height: Dimensions.number45),
-          AddressSetUpForm(),
+          PassSetUpForm(),
           SizedBox(height: Dimensions.number45),
           Text(
             "@Ứng dụng được phát triển bởi nhóm FTeam",

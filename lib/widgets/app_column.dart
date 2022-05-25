@@ -55,7 +55,7 @@ class AppColumn extends StatelessWidget {
             SizedBox(width: Dimensions.number70),
             IconAndTextWidget(
                 icon: Icons.location_on,
-                iconColor: AppColor.mainColor,
+                iconColor: Color(0xFF9F8F80),
                 text: "Hồ Chí Minh")
           ],
         )

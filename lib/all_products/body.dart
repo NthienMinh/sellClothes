@@ -19,7 +19,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFF4F4F4),
       body: Stack(children: [
         Positioned(
             top: Dimensions.number25 * 1.5,

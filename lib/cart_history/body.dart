@@ -4,6 +4,7 @@ import 'package:mobile_ui/cart_history/item_cart_history_form.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
+import 'package:mobile_ui/widgets/big_text.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -34,6 +35,10 @@ class _BodyState extends State<Body> {
                     size: Dimensions.number25,
                   ),
                 ),
+                BigText(
+                  text: 'Tổng: 1.500.000 VND',
+                  color: Colors.red,
+                )
                 // SizedBox(width: Dimensions.number100 * 2),
                 // GestureDetector(
                 //   onTap: () => Navigator.pushNamed(context, HomePage.routeName),

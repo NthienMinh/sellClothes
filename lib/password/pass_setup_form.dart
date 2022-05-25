@@ -4,19 +4,18 @@ import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/widgets/app_text_field.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
 
-class AddressSetUpForm extends StatefulWidget {
-  const AddressSetUpForm({Key? key}) : super(key: key);
+class PassSetUpForm extends StatefulWidget {
+  const PassSetUpForm({Key? key}) : super(key: key);
 
   @override
-  State<AddressSetUpForm> createState() => _AddressSetUpForm();
+  State<PassSetUpForm> createState() => _PassSetUpForm();
 }
 
-class _AddressSetUpForm extends State<AddressSetUpForm> {
+class _PassSetUpForm extends State<PassSetUpForm> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController addressNumber = TextEditingController();
-  TextEditingController addressStreet = TextEditingController();
-  TextEditingController addressDitrict = TextEditingController();
-  TextEditingController addressCity = TextEditingController();
+  TextEditingController OldPass = TextEditingController();
+  TextEditingController NewPass = TextEditingController();
+  TextEditingController ConfirmPass = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,25 +24,20 @@ class _AddressSetUpForm extends State<AddressSetUpForm> {
       child: Column(
         children: [
           AppTextField(
-              textController: addressNumber,
-              hintText: "Số nhà",
-              icon: Icons.home),
+              textController: OldPass,
+              hintText: "Mật khẩu cũ",
+              icon: Icons.vpn_key),
           SizedBox(height: Dimensions.number30),
           AppTextField(
-              textController: addressStreet,
-              hintText: "Đường",
-              icon: Icons.streetview_outlined),
+              textController: NewPass,
+              hintText: "Mật khẩu mới",
+              icon: Icons.vpn_key),
           SizedBox(height: Dimensions.number25),
           AppTextField(
-              textController: addressDitrict,
-              hintText: "Quận",
-              icon: Icons.share_location),
-          SizedBox(height: Dimensions.number25),
-          AppTextField(
-              textController: addressCity,
-              hintText: "Thành phố",
-              icon: Icons.location_city),
-          SizedBox(height: Dimensions.number25),
+              textController: ConfirmPass,
+              hintText: "Xác nhận mật khẩu",
+              icon: Icons.vpn_key),
+          SizedBox(height: Dimensions.number40),
           GestureDetector(
             onTap: () => Navigator.pop(context),
             child: Container(
@@ -61,7 +55,7 @@ class _AddressSetUpForm extends State<AddressSetUpForm> {
               ),
             ),
           ),
-          SizedBox(height: Dimensions.number45),
+          SizedBox(height: Dimensions.number100),
           GestureDetector(
             onTap: () => Navigator.pop(context),
             child: Text(

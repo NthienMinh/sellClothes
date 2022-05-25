@@ -22,6 +22,7 @@ class _ProfileSetUpFormState extends State<ProfileSetUpForm> {
   TextEditingController fullNameText = TextEditingController();
   TextEditingController phoneText = TextEditingController();
   TextEditingController emailText = TextEditingController();
+  TextEditingController addressText = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +42,11 @@ class _ProfileSetUpFormState extends State<ProfileSetUpForm> {
           SizedBox(height: Dimensions.number30),
           AppTextField(
               textController: emailText, hintText: "Email", icon: Icons.email),
+          SizedBox(height: Dimensions.number30),
+          AppTextField(
+              textController: addressText,
+              hintText: "Địa chỉ",
+              icon: Icons.location_on),
           SizedBox(height: Dimensions.number30),
           GestureDetector(
             onTap: () => Navigator.pop(context),
