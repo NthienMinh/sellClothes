@@ -29,7 +29,7 @@ class Body extends StatelessWidget {
           ),
           AccountMenu(
             text: "Đổi mật khẩu",
-            icon: Icons.location_on,
+            icon: Icons.vpn_key,
             press: () {
               Navigator.pushNamed(context, PassSetUpScreen.routeName);
             },

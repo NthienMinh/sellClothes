@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
+import 'package:mobile_ui/widgets/small_text.dart';
 
 class ItemCartForm extends StatefulWidget {
   const ItemCartForm({Key? key}) : super(key: key);
@@ -52,6 +53,8 @@ class _ItemCartFormState extends State<ItemCartForm> {
                         children: [
                           BigText(
                               text: "Sơ mi trắng đen", color: Colors.black54),
+                          SmallText(text: 'Color: Red', color: Colors.black54),
+                          SmallText(text: 'Size: L', color: Colors.black54),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

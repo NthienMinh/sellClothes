@@ -73,24 +73,28 @@ class _BodyState extends State<Body> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  padding: EdgeInsets.only(
-                      left: Dimensions.number15,
-                      right: Dimensions.number15,
-                      top: Dimensions.number10,
-                      bottom: Dimensions.number10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.number15),
-                      color: Colors.white),
-                  child: Column(
-                    children: [
-                      BigText(
-                        text: "1.500.000 vnđ",
-                        color: Colors.red,
-                      )
-                    ],
-                  ),
+                BigText(
+                  text: "1.500.000 VND",
+                  color: Colors.red,
                 ),
+                // Container(
+                //   padding: EdgeInsets.only(
+                //       left: Dimensions.number15,
+                //       right: Dimensions.number15,
+                //       top: Dimensions.number10,
+                //       bottom: Dimensions.number10),
+                //   decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(Dimensions.number15),
+                //       color: Colors.white),
+                //   child: Column(
+                //     children: [
+                //       BigText(
+                //         text: "1.500.000 vnđ",
+                //         color: Colors.red,
+                //       )
+                //     ],
+                //   ),
+                // ),
                 //Nút bấm thêm hàng, thành tiền
                 Container(
                   alignment: Alignment.center,
