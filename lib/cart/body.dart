@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/cart/item_cart_form.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/home/home_page.dart';
+import 'package:mobile_ui/pay/pay_screen.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
 
@@ -77,41 +79,28 @@ class _BodyState extends State<Body> {
                   text: "1.500.000 VND",
                   color: Colors.red,
                 ),
-                // Container(
-                //   padding: EdgeInsets.only(
-                //       left: Dimensions.number15,
-                //       right: Dimensions.number15,
-                //       top: Dimensions.number10,
-                //       bottom: Dimensions.number10),
-                //   decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(Dimensions.number15),
-                //       color: Colors.white),
-                //   child: Column(
-                //     children: [
-                //       BigText(
-                //         text: "1.500.000 vnđ",
-                //         color: Colors.red,
-                //       )
-                //     ],
-                //   ),
-                // ),
                 //Nút bấm thêm hàng, thành tiền
-                Container(
-                  alignment: Alignment.center,
-                  width: Dimensions.number100 * 1.3,
-                  padding: EdgeInsets.only(
-                      left: Dimensions.number20,
-                      right: Dimensions.number20,
-                      top: Dimensions.number10,
-                      bottom: Dimensions.number10),
-                  child: BigText(
-                    text: "Thanh toán",
-                    size: Dimensions.number15,
-                    color: Colors.white,
+                GestureDetector(
+                  onTap: () =>
+                      Navigator.pushNamed(context, PayScreen.routeName),
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: Dimensions.number100 * 1.3,
+                    padding: EdgeInsets.only(
+                        left: Dimensions.number20,
+                        right: Dimensions.number20,
+                        top: Dimensions.number10,
+                        bottom: Dimensions.number10),
+                    child: BigText(
+                      text: "Thanh toán",
+                      size: Dimensions.number15,
+                      color: Colors.white,
+                    ),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.border20),
+                        color: AppColor.mainColor),
                   ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.border20),
-                      color: AppColor.mainColor),
                 )
               ],
             ),

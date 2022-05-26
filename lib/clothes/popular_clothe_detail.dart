@@ -7,6 +7,7 @@ import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/home/home_page.dart';
 import 'package:mobile_ui/widgets/app_icon.dart';
 import 'package:mobile_ui/widgets/big_text.dart';
+import 'package:mobile_ui/widgets/small_text.dart';
 import 'package:mobile_ui/widgets/text_widget.dart';
 
 class PopularClotheDetail extends StatefulWidget {
@@ -381,22 +382,26 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
                   ),
                 ),
                 //Nút bấm thêm hàng, thành tiền
-                Container(
-                  alignment: Alignment.center,
-                  width: Dimensions.number100 * 1.9,
-                  padding: EdgeInsets.only(
-                      left: Dimensions.number20,
-                      right: Dimensions.number20,
-                      top: Dimensions.number10,
-                      bottom: Dimensions.number10),
-                  child: BigText(
-                    text: total.toString() + " VND" + " | Add",
-                    size: Dimensions.number15,
-                    color: Colors.white,
+                GestureDetector(
+                  onTap: () => _showCupertinoDialog(context),
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: Dimensions.number100 * 1.9,
+                    padding: EdgeInsets.only(
+                        left: Dimensions.number20,
+                        right: Dimensions.number20,
+                        top: Dimensions.number10,
+                        bottom: Dimensions.number10),
+                    child: BigText(
+                      text: total.toString() + " VND" + " | Add",
+                      size: Dimensions.number15,
+                      color: Colors.white,
+                    ),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.border20),
+                        color: AppColor.mainColor),
                   ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.border20),
-                      color: AppColor.mainColor),
                 )
               ],
             ),
@@ -405,4 +410,31 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
       ),
     );
   }
+}
+
+_dismissDialog(BuildContext context) {
+  Navigator.popAndPushNamed(context, HomePage.routeName);
+}
+
+void _showCupertinoDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: BigText(
+            text: 'Thêm thành công!',
+            color: AppColor.mainBlackColor,
+          ),
+          actions: <Widget>[
+            TextButton(
+                onPressed: () {
+                  _dismissDialog(context);
+                },
+                child: SmallText(
+                  text: 'Đóng',
+                  color: AppColor.mainColor,
+                )),
+          ],
+        );
+      });
 }
