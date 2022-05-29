@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:mobile_ui/controller/base_api.dart';
 import 'package:mobile_ui/routes.dart';
 import 'package:mobile_ui/screens/sign_in/sign_in_screen.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
+    BaseAPI.API = "http://192.168.1.44:3000";
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
     SystemChrome.setPreferredOrientations([

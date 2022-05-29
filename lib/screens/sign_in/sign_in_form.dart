@@ -71,7 +71,7 @@ class _SignInFormState extends State<SignInForm> {
                 size: Dimensions.font16,
                 color: AppColor.mainBlackColor,
               ),
-              SizedBox(width: Dimensions.number100 + Dimensions.number25),
+              SizedBox(width: Dimensions.number100 * 1.3),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(
                     context, ForgotPassWordScreen.routeName),

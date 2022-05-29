@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/controller/base_api.dart';
 import 'package:mobile_ui/screens/all_products/all_female_product_form.dart';
 import 'package:mobile_ui/screens/all_products/all_male_products_form.dart';
 import 'package:mobile_ui/screens/all_products/search_field.dart';
@@ -8,6 +10,9 @@ import 'package:mobile_ui/screens/cart_history/cart_history_screen.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/screens/widgets/app_icon.dart';
 import 'package:mobile_ui/screens/widgets/big_text.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+
+import '../../models/product.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -17,6 +22,18 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  List<Product> products = [];
+  late PersistentTabController _controller;
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await getProducts();
+      setState(() {});
+    });
+    _controller = PersistentTabController(initialIndex: 0);
+  }
+
   bool men = true;
   bool woman = false;
   bool show = true;
@@ -97,8 +114,25 @@ class _BodyState extends State<Body> {
             left: Dimensions.number15,
             right: Dimensions.number15,
             bottom: 0,
-            child: show ? AllMaleProductsForm() : AllFeMaleProductsForm())
+            child: show
+                ? AllMaleProductsForm(products: products)
+                : AllFeMaleProductsForm(products: products))
       ]),
     );
+  }
+
+  Future<void> getProducts() async {
+    String productsAdd = "/products";
+    BaseAPI _baseAPI = BaseAPI();
+    await _baseAPI.getData(productsAdd).then((value) {
+      if (value.apiStatus == API_STATUS.SUSSCESSED) {
+        products.clear();
+
+        value.object.forEach((element) {
+          products.add(Product.fromJson(element));
+        });
+      }
+    });
+    print("---------------------" + products[0].productName!);
   }
 }

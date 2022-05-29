@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/models/product.dart';
 import 'package:mobile_ui/screens/cart/cart_screen.dart';
 import 'package:mobile_ui/screens/cart_history/cart_history_screen.dart';
 import 'package:mobile_ui/dimensions.dart';
@@ -12,6 +13,7 @@ import 'package:mobile_ui/screens/widgets/text_widget.dart';
 
 class PopularClotheDetail extends StatefulWidget {
   static String routeName = "/popularClotheDetail";
+
   const PopularClotheDetail({Key? key}) : super(key: key);
 
   @override
@@ -19,18 +21,21 @@ class PopularClotheDetail extends StatefulWidget {
 }
 
 class _PopularClotheDetailState extends State<PopularClotheDetail> {
-  int count = 1;
-  int price = 150000;
+  int count = 0;
   int total = 0;
-  bool check1 = true;
-  bool check2 = false;
-  bool check3 = false;
   bool check4 = true;
   bool check5 = false;
   bool check6 = false;
   bool check7 = false;
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    Product product = (ModalRoute.of(context)!.settings.arguments
+        as Map<String, dynamic>)['product'] as Product;
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -61,9 +66,7 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
                         topRight: Radius.circular(Dimensions.border20))),
                 child: Center(
                   child: BigText(
-                    size: Dimensions.font26,
-                    text: "Sơ mi trắng đen",
-                  ),
+                      size: Dimensions.font26, text: product.productName ?? ''),
                 ),
                 width: double.maxFinite,
                 padding: EdgeInsets.only(
@@ -79,10 +82,12 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
               background: Stack(
                 fit: StackFit.expand,
                 children: <Widget>[
-                  Image.asset(
-                    "assets/image/somi01.png",
-                    fit: BoxFit.cover,
-                  ),
+                  Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white38,
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(product.productImg ?? ''))))
                 ],
               ),
             ),
@@ -96,16 +101,14 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
                     width: Dimensions.number10,
                   ),
                   BigText(
-                    text: 'Giá: ' + price.toString() + ' VND',
+                    text: 'Giá: ' + product.productPrice.toString() + ' VND',
                     color: Colors.red,
                     size: Dimensions.number25,
                   )
                 ]),
               ),
               Container(
-                child: TextWidget(
-                    text:
-                        "This is an e-commerce app for food delivery using flutter with backend. This is a shopping app with backend of Laravel and Laravel admin panel using restful api complete CRUD operations. We also used firebase for notification. This tutorial covers complete shopping cart, placing orders, signup or registration, signin or login, payment.This is an e-commerce app for food delivery using flutter with backend. This is a shopping app with backend of Laravel and Laravel admin panel using restful api complete CRUD operations. We also used firebase for notification. This tutorial covers complete shopping cart, placing orders, signup or registration, signin or login, payment.This is an e-commerce app for food delivery using flutter with backend. This is a shopping app with backend of Laravel and Laravel admin panel using restful api complete CRUD operations. We also used firebase for notification. This tutorial covers complete shopping cart, placing orders, signup or registration, signin or login, payment.This is an e-commerce app for food delivery using flutter with backend. This is a shopping app with backend of Laravel and Laravel admin panel using restful api complete CRUD operations. We also used firebase for notification. This tutorial covers complete shopping cart, placing orders, signup or registration, signin or login, payment.This is an e-commerce app for food delivery using flutter with backend. This is a shopping app with backend of Laravel and Laravel admin panel using restful api complete CRUD operations. We also used firebase for notification. This tutorial covers complete shopping cart, placing orders, signup or registration, signin or login, payment.This is an e-commerce app for food delivery using flutter with backend. This is a shopping app with backend of Laravel and Laravel admin panel using restful api complete CRUD operations. We also used firebase for notification. This tutorial covers complete shopping cart, placing orders, signup or registration, signin or login, payment."),
+                child: TextWidget(text: product.productDetail ?? ''),
                 margin: EdgeInsets.only(
                     left: Dimensions.number15, right: Dimensions.number15),
               )
@@ -118,82 +121,6 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
         children: [
           SizedBox(
             height: Dimensions.number10,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(Dimensions.border30),
-                    topRight: Radius.circular(Dimensions.border30))),
-            child: Padding(
-              padding: EdgeInsets.only(
-                  left: Dimensions.number15, bottom: Dimensions.number10),
-              child: Row(
-                children: [
-                  BigText(text: "Color: "),
-                  SizedBox(width: Dimensions.number10),
-                  GestureDetector(
-                    onTap: () {
-                      check1 = true;
-                      check2 = false;
-                      check3 = false;
-                      setState(() {});
-                    },
-                    child: Container(
-                      width: Dimensions.number30,
-                      height: Dimensions.number30,
-                      child: check1
-                          ? Icon(Icons.check, color: Colors.white)
-                          : Container(),
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.number7),
-                          color: Color(0xFF676D5F)),
-                    ),
-                  ),
-                  SizedBox(width: Dimensions.number10),
-                  GestureDetector(
-                    onTap: () {
-                      check1 = false;
-                      check2 = true;
-                      check3 = false;
-                      setState(() {});
-                    },
-                    child: Container(
-                      width: Dimensions.number30,
-                      height: Dimensions.number30,
-                      child: check2
-                          ? Icon(Icons.check, color: Colors.white)
-                          : Container(),
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.number7),
-                          color: Color(0xFF69233C)),
-                    ),
-                  ),
-                  SizedBox(width: Dimensions.number10),
-                  GestureDetector(
-                    onTap: () {
-                      check1 = false;
-                      check2 = false;
-                      check3 = true;
-                      setState(() {});
-                    },
-                    child: Container(
-                      width: Dimensions.number30,
-                      height: Dimensions.number30,
-                      child: check3
-                          ? Icon(Icons.check, color: Colors.white)
-                          : Container(),
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.number7),
-                          color: Color(0xFF3F3660)),
-                    ),
-                  )
-                ],
-              ),
-            ),
           ),
           Container(
             child: Padding(
@@ -216,10 +143,10 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
                       height: Dimensions.number30,
                       child: Padding(
                         padding: EdgeInsets.only(
-                            left: Dimensions.number7,
-                            top: Dimensions.number5,
-                            right: Dimensions.number5,
-                            bottom: Dimensions.number7),
+                          left: Dimensions.number7,
+                          top: Dimensions.number5 * 0.5,
+                          right: Dimensions.number5,
+                        ),
                         child: Container(
                             width: Dimensions.number30,
                             height: Dimensions.number30,
@@ -246,10 +173,10 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
                       height: Dimensions.number30,
                       child: Padding(
                         padding: EdgeInsets.only(
-                            left: Dimensions.number7,
-                            top: Dimensions.number5,
-                            right: Dimensions.number5,
-                            bottom: Dimensions.number7),
+                          top: Dimensions.number10 * 0.25,
+                          left: Dimensions.number5,
+                          right: Dimensions.number5,
+                        ),
                         child: Container(
                             width: Dimensions.number30,
                             height: Dimensions.number30,
@@ -276,10 +203,11 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
                       height: Dimensions.number30,
                       child: Padding(
                         padding: EdgeInsets.only(
-                            left: Dimensions.number7,
-                            top: Dimensions.number5,
-                            right: Dimensions.number5,
-                            bottom: Dimensions.number7),
+                          top: Dimensions.number10 * 0.25,
+                          left: Dimensions.number7,
+                          right: Dimensions.number5,
+                        ),
+                        //bottom: Dimensions.number10),
                         child: Container(
                             width: Dimensions.number30,
                             height: Dimensions.number30,
@@ -305,13 +233,13 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
                       width: Dimensions.number30,
                       height: Dimensions.number30,
                       child: Padding(
-                        padding: EdgeInsets.all(5.5),
+                        padding: EdgeInsets.all(4.3),
                         child: Container(
                             width: Dimensions.number30,
                             height: Dimensions.number30,
                             child: BigText(
                               text: 'XL',
-                              size: Dimensions.number10 * 1.5,
+                              size: Dimensions.number10 * 1.62,
                             )),
                       ),
                       decoration: BoxDecoration(
@@ -348,7 +276,7 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
                         onTap: () {
                           if (count > 1) {
                             count--;
-                            total = price * count;
+                            total = product.productPrice! * count;
                           }
                           setState(() {});
                         },
@@ -368,7 +296,7 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
                       GestureDetector(
                         onTap: () {
                           count++;
-                          total = price * count;
+                          total = product.productPrice! * count;
                           setState(() {});
                         },
                         child: AppIcon(

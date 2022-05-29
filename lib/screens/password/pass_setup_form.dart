@@ -55,7 +55,7 @@ class _PassSetUpForm extends State<PassSetUpForm> {
               ),
             ),
           ),
-          SizedBox(height: Dimensions.number100),
+          SizedBox(height: Dimensions.number100 * 0.6),
           GestureDetector(
             onTap: () => Navigator.pop(context),
             child: Text(

@@ -34,11 +34,12 @@ dependencies:
   persistent_bottom_nav_bar: ^4.0.2
   flutter_svg: ^0.22.0 # help us to use SVG in our app
   provider: ^6.0.2 # for State management
-  http: ^0.13.4
+  # http: ^0.13.4
   shared_preferences: ^2.0.13
   loadmore: ^2.0.1
   expandable: ^5.0.1
   intl: ^0.17.0
+  dio: ^4.0.6
  
   
 

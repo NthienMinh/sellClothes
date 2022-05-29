@@ -34,20 +34,20 @@ class _ProfileSetUpFormState extends State<ProfileSetUpForm> {
               textController: fullNameText,
               hintText: "Tên",
               icon: Icons.person),
-          SizedBox(height: Dimensions.number30),
+          SizedBox(height: Dimensions.number25),
           AppTextField(
               textController: phoneText,
               hintText: "Điện thoại",
               icon: Icons.phone),
-          SizedBox(height: Dimensions.number30),
+          SizedBox(height: Dimensions.number25),
           AppTextField(
               textController: emailText, hintText: "Email", icon: Icons.email),
-          SizedBox(height: Dimensions.number30),
+          SizedBox(height: Dimensions.number25),
           AppTextField(
               textController: addressText,
               hintText: "Địa chỉ",
               icon: Icons.location_on),
-          SizedBox(height: Dimensions.number30),
+          SizedBox(height: Dimensions.number25),
           GestureDetector(
             onTap: () => Navigator.pop(context),
             child: Container(
@@ -65,7 +65,7 @@ class _ProfileSetUpFormState extends State<ProfileSetUpForm> {
               ),
             ),
           ),
-          SizedBox(height: Dimensions.number45),
+          SizedBox(height: Dimensions.number30),
           GestureDetector(
             onTap: () => Navigator.pop(context),
             child: Text(

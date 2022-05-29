@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/models/product.dart';
 import 'package:mobile_ui/screens/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/screens/widgets/big_text.dart';
@@ -8,7 +9,8 @@ import 'package:mobile_ui/screens/widgets/icon_and_text_widgets.dart';
 import 'package:mobile_ui/screens/widgets/small_text.dart';
 
 class popularProducts extends StatefulWidget {
-  const popularProducts({Key? key}) : super(key: key);
+  final List<Product> products;
+  const popularProducts({Key? key, required this.products}) : super(key: key);
 
   @override
   State<popularProducts> createState() => _popularProductsState();
@@ -22,7 +24,6 @@ class _popularProductsState extends State<popularProducts> {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
-        // controller: pageController,
         itemCount: 8,
         itemBuilder: (context, index) {
           return _buildPageItem(index);
@@ -33,8 +34,8 @@ class _popularProductsState extends State<popularProducts> {
     return Padding(
       padding: const EdgeInsets.all(3.0),
       child: GestureDetector(
-        onTap: () =>
-            Navigator.pushNamed(context, PopularClotheDetail.routeName),
+        onTap: () => Navigator.pushNamed(context, PopularClotheDetail.routeName,
+            arguments: {'product': widget.products[index]}),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -46,7 +47,8 @@ class _popularProductsState extends State<popularProducts> {
                   color: Colors.white38,
                   image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage("assets/image/somi01.png"))),
+                      image: NetworkImage(
+                          widget.products[index].productImg ?? ''))),
             ),
             Container(
               height: Dimensions.number85,
@@ -64,9 +66,10 @@ class _popularProductsState extends State<popularProducts> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    BigText(text: "Sơ mi trắng đen "),
+                    BigText(text: widget.products[index].productName ?? ''),
                     SizedBox(height: Dimensions.number10),
-                    SmallText(text: "Chất liệu thân thiện với môi trường"),
+                    SmallText(
+                        text: widget.products[index].productIntroduce ?? ''),
                     SizedBox(height: Dimensions.number10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -74,12 +77,12 @@ class _popularProductsState extends State<popularProducts> {
                         IconAndTextWidget(
                             icon: Icons.checkroom,
                             iconColor: Colors.black,
-                            text: "Cotton"),
+                            text: widget.products[index].productMaterial ?? ''),
                         SizedBox(width: Dimensions.number15),
                         IconAndTextWidget(
                             icon: Icons.location_on,
                             iconColor: AppColor.mainColor,
-                            text: "Hồ Chí Minh")
+                            text: widget.products[index].productLocation ?? '')
                       ],
                     )
                   ],

@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/models/product.dart';
 
 import 'package:mobile_ui/screens/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/dimensions.dart';
@@ -11,7 +14,9 @@ import 'package:mobile_ui/screens/widgets/icon_and_text_widgets.dart';
 import 'package:mobile_ui/screens/widgets/small_text.dart';
 
 class RecommandedClothePageBody extends StatefulWidget {
-  const RecommandedClothePageBody({Key? key}) : super(key: key);
+  final List<Product> products;
+  const RecommandedClothePageBody({Key? key, required this.products})
+      : super(key: key);
 
   @override
   State<RecommandedClothePageBody> createState() =>
@@ -26,15 +31,17 @@ class _RecommandedClothePageBodyState extends State<RecommandedClothePageBody> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.products.length);
     return SizedBox(
-      height: Dimensions.pageView,
-      child: PageView.builder(
-          controller: pageController,
-          itemCount: 5,
-          itemBuilder: (context, position) {
-            return _buildPageItem(position);
-          }),
-    );
+        height: Dimensions.pageView,
+        child: widget.products.length >= 5
+            ? PageView.builder(
+                controller: pageController,
+                itemCount: 5,
+                itemBuilder: (context, position) {
+                  return _buildPageItem(position);
+                })
+            : Container());
   }
 
   Widget _buildPageItem(int index) {
@@ -50,7 +57,7 @@ class _RecommandedClothePageBodyState extends State<RecommandedClothePageBody> {
             color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
             image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage("assets/image/somi01.png"))),
+                image: NetworkImage(widget.products[index].productImg ?? ''))),
       ),
       Align(
         alignment: Alignment.bottomCenter,
@@ -76,9 +83,13 @@ class _RecommandedClothePageBodyState extends State<RecommandedClothePageBody> {
                   left: Dimensions.number15,
                   right: Dimensions.number15),
               child: GestureDetector(
-                onTap: () =>
-                    Navigator.pushNamed(context, PopularClotheDetail.routeName),
-                child: AppColumn(text: "Sơ mi trắng đen"),
+                onTap: () => Navigator.pushNamed(
+                    context, PopularClotheDetail.routeName,
+                    arguments: {'product': widget.products[index]}),
+                child: AppColumn(
+                  text: widget.products[index].productName ?? '',
+                  products: widget.products[index],
+                ),
               )),
         ),
       )

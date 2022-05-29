@@ -69,7 +69,7 @@ class _SignUpFormState extends State<SignUpForm> {
               ),
             ),
           ),
-          SizedBox(height: Dimensions.number10),
+          SizedBox(height: Dimensions.number20),
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, SignInScreen.routeName),
             child: Text(

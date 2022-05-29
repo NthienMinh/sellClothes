@@ -30,7 +30,7 @@ class Body extends StatelessWidget {
           ),
           SizedBox(height: Dimensions.number45),
           PassSetUpForm(),
-          SizedBox(height: Dimensions.number45),
+          SizedBox(height: Dimensions.number100 * 0.65),
           Text(
             "@Ứng dụng được phát triển bởi nhóm FTeam",
             style: TextStyle(color: AppColor.paraColor),
