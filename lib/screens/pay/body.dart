@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/controller/base_api.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/screens/home/home_page.dart';
 import 'package:mobile_ui/screens/pay/infor_pay_form.dart';
 import 'package:mobile_ui/screens/widgets/app_icon.dart';
 import 'package:mobile_ui/screens/widgets/big_text.dart';
 import 'package:mobile_ui/screens/widgets/small_text.dart';
+import 'package:mobile_ui/shared_Preferences.dart';
+import 'package:mobile_ui/store/cart_store.dart/cart_store.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:provider/provider.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -18,6 +22,26 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   bool? bank = false;
   bool? cod = false;
+  late CartStore cartStore;
+   int total = 0;
+    late PersistentTabController _controller;
+  @override
+  void initState() {
+    cartStore = context.read<CartStore>();
+    super.initState();
+    
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      total = (ModalRoute.of(context)!.settings.arguments
+      as Map<String, dynamic>)['total'];
+      print(total);
+      setState(() {
+        
+      });
+
+    });
+    _controller = PersistentTabController(initialIndex: 0);
+  }
+  
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -105,8 +129,7 @@ class _BodyState extends State<Body> {
                   left: Dimensions.number10,
                 ),
                 child: SmallText(
-                  text:
-                      "(*Bạn có thể chọn 1 trong 2 hình thức: chuyển khoản hoặc ship COD)",
+                  text: "(*Hình thức: Chuyển khoản hoặc ship COD)",
                   color: AppColor.mainColor,
                 ),
               ),
@@ -188,12 +211,13 @@ class _BodyState extends State<Body> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               BigText(
-                text: "1.500.000 VND",
+                text: total.toString() + ' VND',
                 color: Colors.red,
               ),
               //Nút bấm thêm hàng, thành tiền
               GestureDetector(
-                onTap: () => _showCupertinoDialog(context),
+                onTap: (){
+                  done();_showCupertinoDialog(context);},
                 child: Container(
                   alignment: Alignment.center,
                   width: Dimensions.number100 * 1.3,
@@ -218,6 +242,26 @@ class _BodyState extends State<Body> {
         ],
       ),
     );
+  }
+  Future<void> done() async{
+    String removeCart = '/removeCart';
+    String addInvoice = '/addInvoice';
+    String addInvoiceDetail = '/addInvoiceDetail';
+    BaseAPI _baseApi = BaseAPI();
+          var id = await  BaseSharedPreferences.getString('user_id');
+    var res = await  _baseApi.postData(addInvoice , body: {'user_id' :id, 'invoice_total_payment' : cartStore.total, 'invoice_created_at' : DateTime.now().toString() });
+    int invoiceId = res.object['insertId'];
+    print('OK------------------'+res.toString());
+    cartStore.cart.forEach((element) async {
+           await  _baseApi.postData(addInvoiceDetail , body: {
+               "invoice_id" : invoiceId ,
+              'product_id': element.productId,
+              'detail_product_quantity' :element.cartProductQuantity,
+              'detail_product_size' :element.cartProductQuantity
+             });
+     });
+     await _baseApi.putData(removeCart , body: {'user_id' : id });
+     cartStore.total = 0;
   }
 }
 

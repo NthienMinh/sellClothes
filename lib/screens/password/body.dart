@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  "Cập nhật địa chỉ",
+                  "Thay đổi mật khẩu",
                   style: TextStyle(
                       fontSize: Dimensions.font20 * 2,
                       color: AppColor.mainColor,

@@ -9,7 +9,8 @@ class AboutScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.mainColor,
-        title: Text("Thông tin về chúng tôi"),
+        title: Text(
+          "Thông tin về chúng tôi"),
       ),
       body: SingleChildScrollView(
         child: Column(

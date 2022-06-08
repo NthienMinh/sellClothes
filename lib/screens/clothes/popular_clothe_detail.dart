@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/controller/cart.dart';
+import 'package:mobile_ui/models/cart.dart';
 import 'package:mobile_ui/models/product.dart';
 import 'package:mobile_ui/screens/cart/cart_screen.dart';
 import 'package:mobile_ui/screens/cart_history/cart_history_screen.dart';
@@ -10,6 +13,8 @@ import 'package:mobile_ui/screens/widgets/app_icon.dart';
 import 'package:mobile_ui/screens/widgets/big_text.dart';
 import 'package:mobile_ui/screens/widgets/small_text.dart';
 import 'package:mobile_ui/screens/widgets/text_widget.dart';
+import 'package:mobile_ui/shared_Preferences.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class PopularClotheDetail extends StatefulWidget {
   static String routeName = "/popularClotheDetail";
@@ -21,6 +26,8 @@ class PopularClotheDetail extends StatefulWidget {
 }
 
 class _PopularClotheDetailState extends State<PopularClotheDetail> {
+  Cart cart = Cart();
+  late PersistentTabController _controller;
   int count = 0;
   int total = 0;
   bool check4 = true;
@@ -30,12 +37,19 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
   @override
   void initState() {
     super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      var id = await  BaseSharedPreferences.getString('user_id');
+      cart.userId = int.parse(id);
+       setState(() {}); 
+    });
+    _controller = PersistentTabController(initialIndex: 0);
   }
 
   @override
   Widget build(BuildContext context) {
     Product product = (ModalRoute.of(context)!.settings.arguments
         as Map<String, dynamic>)['product'] as Product;
+    cart.productId = product.productId;
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -310,7 +324,21 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
                 ),
                 //Nút bấm thêm hàng, thành tiền
                 GestureDetector(
-                  onTap: () => _showCupertinoDialog(context),
+                  onTap: () async {                   
+                    _showCupertinoDialog(context);
+                    cart.cartProductQuantity = count;
+                  if(check4 == true){
+                    cart.cartProductSize = "S";
+                  }else if(check5 == true){
+                    cart.cartProductSize = "M";
+                  }else if(check6 == true){
+                    cart.cartProductSize = "L";
+                  }else if(check7 == true){
+                    cart.cartProductSize = "XL";
+                  };
+                  bool status = await CartController.addCart(cart);
+                  print(count.toString());
+                  print(cart.cartProductSize);},
                   child: Container(
                     alignment: Alignment.center,
                     width: Dimensions.number100 * 1.9,
@@ -337,9 +365,7 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
       ),
     );
   }
-}
-
-_dismissDialog(BuildContext context) {
+  _dismissDialog(BuildContext context) {
   Navigator.popAndPushNamed(context, HomePage.routeName);
 }
 
@@ -356,6 +382,7 @@ void _showCupertinoDialog(BuildContext context) {
             TextButton(
                 onPressed: () {
                   _dismissDialog(context);
+                  
                 },
                 child: SmallText(
                   text: 'Đóng',
@@ -365,3 +392,6 @@ void _showCupertinoDialog(BuildContext context) {
         );
       });
 }
+}
+
+

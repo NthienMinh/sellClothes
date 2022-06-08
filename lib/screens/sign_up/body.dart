@@ -30,7 +30,7 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: Dimensions.number15),
             SignUpForm(),
-            SizedBox(height: Dimensions.number100 * 0.4),
+            SizedBox(height: Dimensions.number70),
             Text(
               "@Ứng dụng được phát triển bởi nhóm FTeam",
               style: TextStyle(color: AppColor.paraColor),

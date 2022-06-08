@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:get/get.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/controller/cart.dart';
+import 'package:mobile_ui/controller/invoice.dart';
+import 'package:mobile_ui/controller/user.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/models/cart.dart';
+import 'package:mobile_ui/models/invoice.dart';
+import 'package:mobile_ui/models/user.dart';
 import 'package:mobile_ui/screens/widgets/big_text.dart';
 import 'package:mobile_ui/screens/widgets/small_text.dart';
+import 'package:mobile_ui/shared_Preferences.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class ItemCartHistoryForm extends StatefulWidget {
   const ItemCartHistoryForm({Key? key}) : super(key: key);
@@ -12,6 +22,25 @@ class ItemCartHistoryForm extends StatefulWidget {
 }
 
 class _ItemCartHistoryFormState extends State<ItemCartHistoryForm> {
+  User user = User();
+  late Invoice invoice ;
+  late PersistentTabController _controller;
+  @override
+  void initState() {
+    super.initState();
+    
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      var id = await  BaseSharedPreferences.getString('user_id');
+      // invoice = await InvoiceController.getInvoices(int.parse(id));
+      invoice = (ModalRoute.of(context)!.settings.arguments
+      as Map<String, dynamic>)['invoice'] as Invoice;
+      setState(() {
+        
+      });
+
+    });
+    _controller = PersistentTabController(initialIndex: 0);
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,9 +52,11 @@ class _ItemCartHistoryFormState extends State<ItemCartHistoryForm> {
         child: ListView.builder(
             physics: const BouncingScrollPhysics(
                 parent: AlwaysScrollableScrollPhysics()),
-            itemCount: 10,
+                itemCount: invoice.listDetails?.length,            
             itemBuilder: (_, index) {
-              return Container(
+              var element = invoice.listDetails?[index];
+              return 
+               Container(
                 height: Dimensions.number100,
                 width: double.maxFinite,
                 child: Row(
@@ -37,7 +68,7 @@ class _ItemCartHistoryFormState extends State<ItemCartHistoryForm> {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage("assets/image/somi01.png")),
+                              image: NetworkImage(element!.productImg ?? '')),
                           borderRadius:
                               BorderRadius.circular(Dimensions.border15),
                           color: Colors.white),
@@ -51,19 +82,19 @@ class _ItemCartHistoryFormState extends State<ItemCartHistoryForm> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           BigText(
-                              text: "Sơ mi trắng đen", color: Colors.black54),
-                          SmallText(text: 'Color: Red', color: Colors.black54),
-                          SmallText(text: 'Size: L', color: Colors.black54),
+                              text: element.productName ?? '', color: Colors.black54),
+                          
+                          SmallText(text: 'Size: '+ element.detailProductSize! , color: Colors.black54),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               BigText(
-                                text: "150.000 vnđ",
+                                text:element.productPrice!.toString() + ' VND',
                                 color: Colors.redAccent,
                                 size: Dimensions.font16,
                               ),
                               BigText(
-                                text: "Số lượng :" + " 1",
+                                text: "Số lượng :" + element.detailProductQuantity.toString(),
                                 color: Colors.black54,
                                 size: Dimensions.font16,
                               ),

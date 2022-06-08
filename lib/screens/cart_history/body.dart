@@ -34,11 +34,7 @@ class _BodyState extends State<Body> {
                     backgroundColor: AppColor.mainColor,
                     size: Dimensions.number25,
                   ),
-                ),
-                BigText(
-                  text: 'Tổng: 1.500.000 VND',
-                  color: Colors.red,
-                )
+                ),              
               ],
             )),
         Positioned(

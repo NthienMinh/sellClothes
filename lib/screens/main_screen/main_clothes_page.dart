@@ -1,23 +1,19 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/controller/base_api.dart';
 import 'package:mobile_ui/models/product.dart';
-import 'package:mobile_ui/screens/cart_history/cart_history_screen.dart';
-import 'package:mobile_ui/screens/cart_no_data/no_data_page.dart';
+import 'package:mobile_ui/screens/cart/cart_screen.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/screens/main_screen/banner.dart';
 import 'package:mobile_ui/screens/main_screen/popular_product.dart';
-import 'package:mobile_ui/screens/main_screen/search_field.dart';
 import 'package:mobile_ui/screens/widgets/app_icon.dart';
 import 'package:mobile_ui/screens/widgets/big_text.dart';
 import 'package:mobile_ui/screens/widgets/small_text.dart';
-import 'package:mobile_ui/controller/products_controler.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-
 import 'recommanded_clothes_page_body.dart';
 
 class MainClothesPage extends StatefulWidget {
@@ -58,15 +54,15 @@ class _MainClothesPageState extends State<MainClothesPage> {
               Column(
                 children: [
                   BigText(
-                    text: "FTeam",
+                    text: "FTeam Shop",
                     color: AppColor.mainColor,
-                    size: Dimensions.font20,
+                    size: Dimensions.number40,
                   )
                 ],
               ),
-              SearchField(),
+              
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, NoDataPage.routeName),
+                onTap: () => Navigator.pushNamed(context, CartScreen.routeName),
                 child: Container(
                   child: AppIcon(
                     icon: Icons.shopping_cart,

@@ -1,20 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:mobile_ui/Colors.dart';
+import 'package:mobile_ui/controller/base_api.dart';
+import 'package:mobile_ui/controller/cart.dart';
+import 'package:mobile_ui/controller/user.dart';
 import 'package:mobile_ui/dimensions.dart';
+import 'package:mobile_ui/models/cart.dart';
+import 'package:mobile_ui/models/user.dart';
 import 'package:mobile_ui/screens/widgets/big_text.dart';
 import 'package:mobile_ui/screens/widgets/small_text.dart';
+import 'package:mobile_ui/shared_Preferences.dart';
+import 'package:mobile_ui/store/cart_store.dart/cart_store.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:provider/provider.dart';
 
 class ItemCartForm extends StatefulWidget {
   const ItemCartForm({Key? key}) : super(key: key);
+  
 
   @override
   State<ItemCartForm> createState() => _ItemCartFormState();
 }
 
 class _ItemCartFormState extends State<ItemCartForm> {
-  int count = 1;
+  int total =0;
+  User user = User();
+  
+  late CartStore cartStore;
+  late PersistentTabController _controller;
+  @override
+  void initState() {
+    super.initState();
+    cartStore = context.read<CartStore>();
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      var id = await  BaseSharedPreferences.getString('user_id');
+      user = await UserController.getUser(int.parse(id));
+       cartStore.cart.clear();
+      cartStore.cart.addAll(await CartController.getCarts(user.userId!)) ;
+      setState(() {}); 
+
+    });
+    _controller = PersistentTabController(initialIndex: 0);
+  }
+  
   @override
   Widget build(BuildContext context) {
+         cartStore.total = 0;
     return Container(
       margin: EdgeInsets.only(top: Dimensions.number10),
       color: Colors.white,
@@ -24,8 +55,10 @@ class _ItemCartFormState extends State<ItemCartForm> {
         child: ListView.builder(
             physics: const BouncingScrollPhysics(
                 parent: AlwaysScrollableScrollPhysics()),
-            itemCount: 10,
+            itemCount:  cartStore.cart.length,
             itemBuilder: (_, index) {
+              total +=  cartStore.cart[index].cartProductQuantity! *  cartStore.cart[index].productPrice!;
+              cartStore.total = total;
               return Container(
                 height: Dimensions.number100,
                 width: double.maxFinite,
@@ -38,7 +71,7 @@ class _ItemCartFormState extends State<ItemCartForm> {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage("assets/image/somi01.png")),
+                              image: NetworkImage( cartStore.cart[index].productImg!)),
                           borderRadius:
                               BorderRadius.circular(Dimensions.border15),
                           color: Colors.white),
@@ -52,14 +85,13 @@ class _ItemCartFormState extends State<ItemCartForm> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           BigText(
-                              text: "Sơ mi trắng đen", color: Colors.black54),
-                          SmallText(text: 'Color: Red', color: Colors.black54),
-                          SmallText(text: 'Size: L', color: Colors.black54),
+                              text:  cartStore.cart[index].productName!, color: Colors.black54),
+                          SmallText(text: 'Size: '+ cartStore.cart[index].cartProductSize!, color: Colors.black54),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               BigText(
-                                text: "150.000 vnđ",
+                                text:  cartStore.cart[index].productPrice!.toString() + ' VND' ,
                                 color: Colors.redAccent,
                                 size: Dimensions.font16,
                               ),
@@ -77,8 +109,8 @@ class _ItemCartFormState extends State<ItemCartForm> {
                                   children: [
                                     GestureDetector(
                                       onTap: () {
-                                        if (count > 0) {
-                                          count--;
+                                        if ( cartStore.cart[index].cartProductQuantity! > 0) {
+                                           cartStore.cart[index].cartProductQuantity =  cartStore.cart[index].cartProductQuantity! - 1 ;
                                         }
                                         setState(() {});
                                       },
@@ -86,11 +118,11 @@ class _ItemCartFormState extends State<ItemCartForm> {
                                           color: AppColor.signColor),
                                     ),
                                     SizedBox(width: Dimensions.number7),
-                                    BigText(text: count.toString()),
+                                    BigText(text:  cartStore.cart[index].cartProductQuantity.toString()),
                                     SizedBox(width: Dimensions.number7),
                                     GestureDetector(
                                         onTap: () {
-                                          count++;
+                                           cartStore.cart[index].cartProductQuantity =  cartStore.cart[index].cartProductQuantity! + 1;
                                           setState(() {});
                                         },
                                         child: Icon(Icons.add,
@@ -110,4 +142,5 @@ class _ItemCartFormState extends State<ItemCartForm> {
       ),
     );
   }
+  
 }

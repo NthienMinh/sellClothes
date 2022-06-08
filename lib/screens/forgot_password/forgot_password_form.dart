@@ -14,8 +14,22 @@ class ForgotPassWordForm extends StatefulWidget {
 class _ForgotPassWordFormState extends State<ForgotPassWordForm> {
   final _formKey = GlobalKey<FormState>();
   String? email;
+  final List<String?> errors = [];
 
   TextEditingController emailText = TextEditingController();
+  void addError({String? error}) {
+    if (!errors.contains(error))
+      setState(() {
+        errors.add(error);
+      });
+  }
+
+  void removeError({String? error}) {
+    if (errors.contains(error))
+      setState(() {
+        errors.remove(error);
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +38,12 @@ class _ForgotPassWordFormState extends State<ForgotPassWordForm> {
       child: Column(
         children: [
           SizedBox(height: Dimensions.number70 - Dimensions.number15),
-          AppTextField(
-              textController: emailText, hintText: "Email", icon: Icons.email),
+          // AppTextField(
+          //     textController: emailText, hintText: "Email", icon: Icons.email),
+          buildForgotEmailFormField(),
           SizedBox(height: Dimensions.number70),
           GestureDetector(
-              onTap: () => Navigator.pushNamed(context, HomePage.routeName),
+              onTap: () => Navigator.pushNamed(context, SignInScreen.routeName),
               child: Container(
                 height: Dimensions.screenHeight / 13,
                 width: Dimensions.screenWidth / 2,
@@ -57,5 +72,39 @@ class _ForgotPassWordFormState extends State<ForgotPassWordForm> {
         ],
       ),
     );
+  }
+
+  TextFormField buildForgotEmailFormField() {
+    return TextFormField(
+        controller: emailText,
+        keyboardType: TextInputType.name,
+        onSaved: (newValue) => email = newValue,
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            removeError(error: Dimensions.kNamelNullError);
+          }
+          return null;
+        },
+        validator: (value) {
+          if (value!.isEmpty) {
+            addError(error: Dimensions.kNamelNullError);
+            return "";
+          }
+          return null;
+        },
+        decoration: InputDecoration(
+            hintText: "Email",
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            prefixIcon: Icon(Icons.person, color: AppColor.mainColor),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.black12, width: 2.0),
+              borderRadius: BorderRadius.circular(Dimensions.number15),
+            ),
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Dimensions.border15),
+                borderSide: BorderSide(width: 1.0, color: Colors.black12)),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Dimensions.border15),
+                borderSide: BorderSide(width: 1.0, color: Colors.black12))));
   }
 }

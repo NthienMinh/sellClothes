@@ -4,7 +4,6 @@ import 'package:mobile_ui/screens/account/about.dart';
 import 'package:mobile_ui/screens/password/pass_setup_screen.dart';
 import 'package:mobile_ui/screens/cart/cart_screen.dart';
 import 'package:mobile_ui/screens/cart_history/cart_history_screen.dart';
-import 'package:mobile_ui/screens/cart_no_data/no_data_page.dart';
 import 'package:mobile_ui/screens/clothes/popular_clothe_detail.dart';
 import 'package:mobile_ui/screens/forgot_password/forgot_password.dart';
 import 'package:mobile_ui/screens/home/home_page.dart';
@@ -23,7 +22,6 @@ final Map<String, WidgetBuilder> routes = {
   AboutScreen.routeName: (context) => AboutScreen(),
   ProfileSetUpScreen.routeName: (context) => const ProfileSetUpScreen(),
   PassSetUpScreen.routeName: (context) => const PassSetUpScreen(),
-  NoDataPage.routeName: (context) => const NoDataPage(),
-  CartScreen.routeName: (context) => const CartScreen(),
+  CartScreen.routeName: (context) =>  CartScreen(),
   PayScreen.routeName: (context) => PayScreen(),
 };

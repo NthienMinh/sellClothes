@@ -4,7 +4,6 @@ import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/controller/base_api.dart';
 import 'package:mobile_ui/screens/all_products/all_female_product_form.dart';
 import 'package:mobile_ui/screens/all_products/all_male_products_form.dart';
-import 'package:mobile_ui/screens/all_products/search_field.dart';
 import 'package:mobile_ui/screens/cart/cart_screen.dart';
 import 'package:mobile_ui/screens/cart_history/cart_history_screen.dart';
 import 'package:mobile_ui/dimensions.dart';
@@ -48,7 +47,30 @@ class _BodyState extends State<Body> {
             right: Dimensions.number15,
             child: Row(
               children: [
-                SearchField(),
+                Container(
+                  width: Dimensions.number100 * 2.3,
+                  height: Dimensions.number40,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(Dimensions.number15),
+                  ),
+                  child: TextField(
+                    textInputAction: TextInputAction.search,
+                    onChanged: (value) async {
+                      await getProducts(q: value);
+                      setState(() {});
+                    },
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        hintText: "Tìm kiếm...",
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: AppColor.mainColor,
+                        )),
+                  ),
+                ),
                 SizedBox(width: Dimensions.number15),
                 GestureDetector(
                   onTap: () =>
@@ -121,18 +143,30 @@ class _BodyState extends State<Body> {
     );
   }
 
-  Future<void> getProducts() async {
+  Future<void> getProducts({String q = ''}) async {
     String productsAdd = "/products";
     BaseAPI _baseAPI = BaseAPI();
-    await _baseAPI.getData(productsAdd).then((value) {
-      if (value.apiStatus == API_STATUS.SUSSCESSED) {
-        products.clear();
+    if (q == '') {
+      await _baseAPI.getData(productsAdd).then((value) {
+        if (value.apiStatus == API_STATUS.SUSSCESSED) {
+          products.clear();
 
-        value.object.forEach((element) {
-          products.add(Product.fromJson(element));
-        });
-      }
-    });
+          value.object.forEach((element) {
+            products.add(Product.fromJson(element));
+          });
+        }
+      });
+    } else {
+      await _baseAPI.getData('/product/search', params: {'q': q}).then((value) {
+        if (value.apiStatus == API_STATUS.SUSSCESSED) {
+          products.clear();
+
+          value.object.forEach((element) {
+            products.add(Product.fromJson(element));
+          });
+        }
+      });
+    }
     print("---------------------" + products[0].productName!);
   }
 }

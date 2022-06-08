@@ -33,4 +33,21 @@ class Dimensions {
   static double border30 = screenHeight / 21.3;
   static double border15 = screenHeight / 42.6;
   static double border20 = screenHeight / 32;
+
+  //URL
+  static String API_URL = 'http://192.168.1.210:3000';
+
+  //error
+
+  static final RegExp emailValidatorRegExp =
+      RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+  static const String kEmailNullError = "Vui lòng nhập email";
+  static const String kInvalidEmailError = "Email không hợp lệ";
+  static const String kInvalidPhoneError = "SĐT không hợp lệ";
+  static const String kPassNullError = "Vui lòng nhập mật khẩu";
+  static const String kShortPassError = "Mật khẩu quá ngắn";
+  static const String kMatchPassError = "Mật khẩu không trùng khớp";
+  static const String kNamelNullError = "Vui lòng nhập tên của bạn";
+  static const String kPhoneNumberNullError = "Vui lòng nhập số điện thoại";
+  static const String kAddressNullError = "Vui lòng nhập địa chỉ";
 }
