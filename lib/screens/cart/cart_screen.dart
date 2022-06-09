@@ -40,7 +40,7 @@ class _CartScreenState extends State<CartScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap: () => Navigator.of(context).pop(),
+                  onTap: () => Navigator.pushNamed(context, HomePage.routeName),
                   child: AppIcon(
                     icon: Icons.arrow_back_ios_new,
                     iconColor: Colors.white,

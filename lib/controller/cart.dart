@@ -35,4 +35,33 @@ class CartController {
     }
     return false;
   }
+  static Future<bool> delCart(Cart cart) async {
+    String delCart = "/delCart";
+    BaseAPI _baseAPI = BaseAPI();
+    Map<String, dynamic> body = {
+      'user_id': cart.userId,
+      'product_id': cart.productId,
+      'cart_product_size': cart.cartProductSize,  
+    };
+    var res = await _baseAPI.postData(delCart, body: body);
+    if (res.apiStatus == API_STATUS.SUSSCESSED) {
+      return true;
+    }
+    return false;
+  }
+  static Future<bool> updateCart(Cart cart) async {
+    String updateCart = "/updateCart";
+    BaseAPI _baseAPI = BaseAPI();
+    Map<String, dynamic> body = {
+      'cart_product_quantity': cart.cartProductQuantity, 
+      'user_id': cart.userId,
+      'product_id': cart.productId,
+      'cart_product_size': cart.cartProductSize,  
+    };
+    var res = await _baseAPI.postData(updateCart, body: body);
+    if (res.apiStatus == API_STATUS.SUSSCESSED) {
+      return true;
+    }
+    return false;
+  }
 }

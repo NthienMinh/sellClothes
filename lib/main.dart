@@ -24,7 +24,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp>  {
   @override
   void initState() {
-    BaseAPI.API = "http://192.168.1.37:3000";
+    BaseAPI.API = "https://fteam-api.phatdev.xyz";
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
     SystemChrome.setPreferredOrientations([

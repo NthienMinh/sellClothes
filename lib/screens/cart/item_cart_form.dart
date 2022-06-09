@@ -7,6 +7,8 @@ import 'package:mobile_ui/controller/user.dart';
 import 'package:mobile_ui/dimensions.dart';
 import 'package:mobile_ui/models/cart.dart';
 import 'package:mobile_ui/models/user.dart';
+import 'package:mobile_ui/screens/cart/cart_screen.dart';
+import 'package:mobile_ui/screens/home/home_page.dart';
 import 'package:mobile_ui/screens/widgets/big_text.dart';
 import 'package:mobile_ui/screens/widgets/small_text.dart';
 import 'package:mobile_ui/shared_Preferences.dart';
@@ -23,7 +25,8 @@ class ItemCartForm extends StatefulWidget {
 }
 
 class _ItemCartFormState extends State<ItemCartForm> {
-  int total =0;
+  int total = 0;
+  int temp = 0;
   User user = User();
   
   late CartStore cartStore;
@@ -45,7 +48,7 @@ class _ItemCartFormState extends State<ItemCartForm> {
   
   @override
   Widget build(BuildContext context) {
-         cartStore.total = 0;
+    cartStore.total =0;
     return Container(
       margin: EdgeInsets.only(top: Dimensions.number10),
       color: Colors.white,
@@ -57,7 +60,9 @@ class _ItemCartFormState extends State<ItemCartForm> {
                 parent: AlwaysScrollableScrollPhysics()),
             itemCount:  cartStore.cart.length,
             itemBuilder: (_, index) {
-              total +=  cartStore.cart[index].cartProductQuantity! *  cartStore.cart[index].productPrice!;
+              total = cartStore.total;
+              temp = cartStore.cart[index].cartProductQuantity! *  cartStore.cart[index].productPrice!;
+              total += temp;
               cartStore.total = total;
               return Container(
                 height: Dimensions.number100,
@@ -108,9 +113,30 @@ class _ItemCartFormState extends State<ItemCartForm> {
                                 child: Row(
                                   children: [
                                     GestureDetector(
-                                      onTap: () {
-                                        if ( cartStore.cart[index].cartProductQuantity! > 0) {
-                                           cartStore.cart[index].cartProductQuantity =  cartStore.cart[index].cartProductQuantity! - 1 ;
+                                      onTap: () async {
+                                        if (cartStore.cart[index]
+                                                .cartProductQuantity! >
+                                            0) {
+                                          cartStore.cart[index]
+                                              .cartProductQuantity = cartStore
+                                                  .cart[index]
+                                                  .cartProductQuantity! -
+                                              1;
+                                              temp = cartStore.cart[index].cartProductQuantity! *  cartStore.cart[index].productPrice!; 
+                                              cartStore.total = cartStore.total -temp;
+                                              bool status =
+                                              await CartController.updateCart(
+                                                  cartStore.cart[index]);
+                                              setState(() {});
+                                        }
+                                        if (cartStore.cart[index]
+                                                .cartProductQuantity! ==
+                                            0) {
+                                          bool status =
+                                              await CartController.delCart(
+                                                  cartStore.cart[index]);
+                                            _showCupertinoDialog(context, text: 'Bạn đã xóa sản phẩm!');
+                                          setState(() {});
                                         }
                                         setState(() {});
                                       },
@@ -121,8 +147,11 @@ class _ItemCartFormState extends State<ItemCartForm> {
                                     BigText(text:  cartStore.cart[index].cartProductQuantity.toString()),
                                     SizedBox(width: Dimensions.number7),
                                     GestureDetector(
-                                        onTap: () {
+                                        onTap: () async {
                                            cartStore.cart[index].cartProductQuantity =  cartStore.cart[index].cartProductQuantity! + 1;
+                                           bool status =
+                                              await CartController.updateCart(
+                                                  cartStore.cart[index]);
                                           setState(() {});
                                         },
                                         child: Icon(Icons.add,
@@ -142,5 +171,33 @@ class _ItemCartFormState extends State<ItemCartForm> {
       ),
     );
   }
-  
+    _dismissDialog(BuildContext context) {
+  Navigator.popAndPushNamed(context, CartScreen.routeName);
+  setState(() {
+    
+  });
+}
+
+void _showCupertinoDialog(BuildContext context, {required String text}) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: BigText(
+            text: text,
+            color: AppColor.mainBlackColor,
+          ),
+          actions: <Widget>[
+            TextButton(
+                onPressed: () {
+                  _dismissDialog(context);
+                },
+                child: SmallText(
+                  text: 'Đóng',
+                  color: AppColor.mainColor,
+                )),
+          ],
+        );
+      });
+}
 }
