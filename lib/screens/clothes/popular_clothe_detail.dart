@@ -324,21 +324,27 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
                 ),
                 //Nút bấm thêm hàng, thành tiền
                 GestureDetector(
-                  onTap: () async {                   
-                    _showCupertinoDialog(context);
-                    cart.cartProductQuantity = count;
-                  if(check4 == true){
-                    cart.cartProductSize = "S";
-                  }else if(check5 == true){
-                    cart.cartProductSize = "M";
-                  }else if(check6 == true){
-                    cart.cartProductSize = "L";
-                  }else if(check7 == true){
-                    cart.cartProductSize = "XL";
-                  };
-                  bool status = await CartController.addCart(cart);
-                  print(count.toString());
-                  print(cart.cartProductSize);},
+                  onTap: () async {
+                    if (count > 0) {
+                      _showCupertinoDialog(context);
+                      cart.cartProductQuantity = count;
+                      if (check4 == true) {
+                        cart.cartProductSize = "S";
+                      } else if (check5 == true) {
+                        cart.cartProductSize = "M";
+                      } else if (check6 == true) {
+                        cart.cartProductSize = "L";
+                      } else if (check7 == true) {
+                        cart.cartProductSize = "XL";
+                      }
+                      ;
+                      bool status = await CartController.addCart(cart);
+                    } 
+                    else{
+                      _showCupertinoDialog1(context);
+                    }            
+                    
+                  },
                   child: Container(
                     alignment: Alignment.center,
                     width: Dimensions.number100 * 1.9,
@@ -377,6 +383,30 @@ void _showCupertinoDialog(BuildContext context) {
           title: BigText(
             text: 'Thêm thành công!',
             color: AppColor.mainBlackColor,
+          ),
+          actions: <Widget>[
+            TextButton(
+                onPressed: () {
+                  _dismissDialog(context);
+                  
+                },
+                child: SmallText(
+                  text: 'Đóng',
+                  color: AppColor.mainColor,
+                )),
+          ],
+        );
+      });
+}
+void _showCupertinoDialog1(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: BigText(
+            text: 'Bạn phải chọn số lượng muốn mua!',
+            color: AppColor.mainBlackColor,
+            size: 14,
           ),
           actions: <Widget>[
             TextButton(
