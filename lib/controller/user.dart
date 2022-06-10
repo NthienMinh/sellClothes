@@ -21,7 +21,7 @@ class UserController {
       'user_full_name': user.userFullName,
       'user_email': user.userEmail,
       'user_phone_number': user.userPhoneNumber,
-      'user_adress': user.userAdress,
+      'user_address': user.userAdress,
       'user_id': user.userId
     };
     var res = await _baseAPI.postData(updateUser, body: body);

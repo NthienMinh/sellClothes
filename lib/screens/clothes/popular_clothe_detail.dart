@@ -28,7 +28,7 @@ class PopularClotheDetail extends StatefulWidget {
 class _PopularClotheDetailState extends State<PopularClotheDetail> {
   Cart cart = Cart();
   late PersistentTabController _controller;
-  int count = 0;
+  int count = 1;
   int total = 0;
   bool check4 = true;
   bool check5 = false;
@@ -50,6 +50,7 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
     Product product = (ModalRoute.of(context)!.settings.arguments
         as Map<String, dynamic>)['product'] as Product;
     cart.productId = product.productId;
+    total = int.parse(product.productPrice.toString());
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(

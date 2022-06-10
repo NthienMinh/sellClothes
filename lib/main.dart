@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp>  {
   @override
   void initState() {
     BaseAPI.API = "https://fteam-api.phatdev.xyz";
+    //BaseAPI.API = "http://192.168.1.210:3000";
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
     SystemChrome.setPreferredOrientations([
