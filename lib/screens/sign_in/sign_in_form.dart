@@ -149,7 +149,7 @@ class _SignInFormState extends State<SignInForm> {
         //return null;
       },
       decoration: InputDecoration(
-          hintText: "Đăng nhập",
+          hintText: "Email",
           floatingLabelBehavior: FloatingLabelBehavior.always,
           prefixIcon: Icon(Icons.email, color: AppColor.mainColor),
           focusedBorder: OutlineInputBorder(
@@ -189,7 +189,7 @@ class _SignInFormState extends State<SignInForm> {
         return null;
       },
       decoration: InputDecoration(
-          hintText: "Đăng nhập",
+          hintText: "Mật khẩu",
           floatingLabelBehavior: FloatingLabelBehavior.always,
           prefixIcon: Icon(Icons.key, color: AppColor.mainColor),
           focusedBorder: OutlineInputBorder(
