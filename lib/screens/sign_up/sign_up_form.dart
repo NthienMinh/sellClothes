@@ -309,6 +309,7 @@ void _showCupertinoDialog(BuildContext context, {required String text}) {
           title: BigText(
             text: text,
             color: AppColor.mainBlackColor,
+            size: 12,
           ),
           actions: <Widget>[
             TextButton(

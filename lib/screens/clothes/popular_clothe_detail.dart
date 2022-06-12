@@ -50,7 +50,7 @@ class _PopularClotheDetailState extends State<PopularClotheDetail> {
     Product product = (ModalRoute.of(context)!.settings.arguments
         as Map<String, dynamic>)['product'] as Product;
     cart.productId = product.productId;
-    total = int.parse(product.productPrice.toString());
+    total = product.productPrice! * count;
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
