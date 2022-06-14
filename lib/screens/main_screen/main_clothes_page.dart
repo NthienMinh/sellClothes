@@ -1,6 +1,5 @@
 import 'dart:math';
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:mobile_ui/Colors.dart';
@@ -60,7 +59,6 @@ class _MainClothesPageState extends State<MainClothesPage> {
                   )
                 ],
               ),
-              
               GestureDetector(
                 onTap: () => Navigator.pushNamed(context, CartScreen.routeName),
                 child: Container(
@@ -87,7 +85,7 @@ class _MainClothesPageState extends State<MainClothesPage> {
             Container(
               margin: const EdgeInsets.only(bottom: 2),
               child: SmallText(
-                text: "Yêu thích",
+                text: "Mới",
               ),
             )
           ]),

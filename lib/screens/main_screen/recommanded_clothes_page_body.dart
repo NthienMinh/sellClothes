@@ -57,7 +57,10 @@ class _RecommandedClothePageBodyState extends State<RecommandedClothePageBody> {
             color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
             image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(widget.products[index].productImg ?? ''))),
+                image: NetworkImage(widget
+                        .products[widget.products.length - index - 1]
+                        .productImg ??
+                    ''))),
       ),
       Align(
         alignment: Alignment.bottomCenter,
@@ -84,11 +87,14 @@ class _RecommandedClothePageBodyState extends State<RecommandedClothePageBody> {
                   right: Dimensions.number15),
               child: GestureDetector(
                 onTap: () => Navigator.pushNamed(
-                    context, PopularClotheDetail.routeName,
-                    arguments: {'product': widget.products[index]}),
+                    context, PopularClotheDetail.routeName, arguments: {
+                  'product': widget.products[widget.products.length - index - 1]
+                }),
                 child: AppColumn(
-                  text: widget.products[index].productName ?? '',
-                  products: widget.products[index],
+                  text: widget.products[widget.products.length - index - 1]
+                          .productName ??
+                      '',
+                  products: widget.products[widget.products.length - index - 1],
                 ),
               )),
         ),

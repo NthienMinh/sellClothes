@@ -35,7 +35,9 @@ class _popularProductsState extends State<popularProducts> {
       padding: const EdgeInsets.all(3.0),
       child: GestureDetector(
         onTap: () => Navigator.pushNamed(context, PopularClotheDetail.routeName,
-            arguments: {'product': widget.products[index]}),
+            arguments: {
+              'product': widget.products[widget.products.length - index - 1]
+            }),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -47,8 +49,10 @@ class _popularProductsState extends State<popularProducts> {
                   color: Colors.white38,
                   image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: NetworkImage(
-                          widget.products[index].productImg ?? ''))),
+                      image: NetworkImage(widget
+                              .products[widget.products.length - index - 1]
+                              .productImg ??
+                          ''))),
             ),
             Container(
               height: Dimensions.number85,
@@ -66,10 +70,17 @@ class _popularProductsState extends State<popularProducts> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    BigText(text: widget.products[index].productName ?? ''),
+                    BigText(
+                        text: widget
+                                .products[widget.products.length - index - 1]
+                                .productName ??
+                            ''),
                     SizedBox(height: Dimensions.number10),
                     SmallText(
-                        text: widget.products[index].productIntroduce ?? ''),
+                        text: widget
+                                .products[widget.products.length - index - 1]
+                                .productIntroduce ??
+                            ''),
                     SizedBox(height: Dimensions.number10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -77,12 +88,20 @@ class _popularProductsState extends State<popularProducts> {
                         IconAndTextWidget(
                             icon: Icons.checkroom,
                             iconColor: Colors.black,
-                            text: widget.products[index].productMaterial ?? ''),
+                            text: widget
+                                    .products[
+                                        widget.products.length - index - 1]
+                                    .productMaterial ??
+                                ''),
                         SizedBox(width: Dimensions.number15),
                         IconAndTextWidget(
                             icon: Icons.location_on,
                             iconColor: AppColor.mainColor,
-                            text: widget.products[index].productLocation ?? '')
+                            text: widget
+                                    .products[
+                                        widget.products.length - index - 1]
+                                    .productLocation ??
+                                '')
                       ],
                     )
                   ],
