@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:get/get.dart';
 import 'package:mobile_ui/Colors.dart';
 import 'package:mobile_ui/controller/base_api.dart';
 import 'package:mobile_ui/screens/all_products/all_female_product_form.dart';
@@ -48,7 +49,7 @@ class _BodyState extends State<Body> {
             child: Row(
               children: [
                 Container(
-                  width: Dimensions.number100 * 2.3,
+                  width: Get.context!.width*0.75,
                   height: Dimensions.number40,
                   decoration: BoxDecoration(
                     color: Colors.white,

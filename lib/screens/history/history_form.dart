@@ -47,6 +47,7 @@ class _HistoryFormState extends State<HistoryForm> {
           top: Dimensions.number10,
           left: Dimensions.number10),
       child: ListView.builder(
+        reverse: true,
         itemCount: invoice.length,itemBuilder: (context, i) =>   
         Container(
               height: Dimensions.number100 * 1.2,
