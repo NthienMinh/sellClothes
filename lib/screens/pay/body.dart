@@ -257,7 +257,7 @@ class _BodyState extends State<Body> {
                "invoice_id" : invoiceId ,
               'product_id': element.productId,
               'detail_product_quantity' :element.cartProductQuantity,
-              'detail_product_size' :element.cartProductQuantity
+              'detail_product_size' :element.cartProductSize
              });
      });
      await _baseApi.putData(removeCart , body: {'user_id' : id });
