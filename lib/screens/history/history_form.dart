@@ -33,7 +33,6 @@ class _HistoryFormState extends State<HistoryForm> {
       var id = await  BaseSharedPreferences.getString('user_id');
       invoice = await InvoiceController.getInvoices(int.parse(id));
         setState(() {}); 
-
     });
     _controller = PersistentTabController(initialIndex: 0);
   }
