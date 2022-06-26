@@ -1,5 +1,5 @@
 
-UI and data handling through the api for mobile app
+UI and data handling through the api for mobile app.
 Thanks for your interest. This is a project I do for project at university. This is a system with web and mobile. This is where I store what works in the mobile section.
 
 You can read what I built here like interface, how to handle data through api, ...
