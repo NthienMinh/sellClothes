@@ -10,3 +10,5 @@ If you are interested in the web part, you can go to the link below and refer to
 
 https://github.com/FTeambyDinhPhuc/do-an-co-so-web
 
+P/S: Since I am hard setting the height and width properties, if you want to see clearly and build the app exactly what I designed then use a device emulator with dimensions of 720x1280
+
